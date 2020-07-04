@@ -36,7 +36,7 @@ public class Swagger2Config {
                 .title("抽象空间")
                 .description("Unvoid工作室")
                 .termsOfServiceUrl("http://www.baidu.com")
-                .version("0.1")
+                .version("0.2")
                 .build();
     }
 }
