@@ -3,6 +3,8 @@ package com.example.ea_system.web.controller;
 import com.example.ea_system.bean.User;
 import com.example.ea_system.bean.ex.UserEx;
 import com.example.ea_system.service.ICheckService;
+import com.example.ea_system.service.ICompanyService;
+import com.example.ea_system.service.IGraduateService;
 import com.example.ea_system.service.IUserService;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
@@ -21,9 +23,12 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
-
     @Autowired
     private ICheckService checkService;
+    @Autowired
+    private ICompanyService companyService;
+    @Autowired
+    private IGraduateService graduateService;
 
     @GetMapping("/loginin")
     @ApiOperation("登录校验")
@@ -34,9 +39,20 @@ public class UserController {
     @PostMapping("/add")
     @ApiOperation("增加用户")
     public Message add(User user) {
-        userService.addAndUpdate(user);
-        checkService.init(user.getUserid());
-        return MessageUtil.success(user.getUserid());
+        boolean hasExieted=userService.addAndUpdate(user);
+        if (hasExieted){
+            int id = user.getUserid();
+            checkService.init(id);
+            if(user.getUsertype()==1)
+                companyService.init(id);
+            else if(user.getUsertype()==2)
+                graduateService.init(id);
+            return MessageUtil.success(user.getUserid());
+        }
+        else{
+            return MessageUtil.success("hasExist");
+        }
+
     }
 
     @PostMapping("/updateById")
@@ -56,6 +72,12 @@ public class UserController {
         else if (!checkService.hasPersonalInfoDo(userEx))
             return MessageUtil.success("nodo"+userEx);
         return MessageUtil.success(userEx);
+    }
+
+    @GetMapping("/getAll")
+    @ApiOperation("查询所有用户")
+    public Message listAllUser(){
+       return MessageUtil.success(userService.listAllUser());
     }
 
 

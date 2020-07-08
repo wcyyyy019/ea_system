@@ -5,7 +5,7 @@
     <id column="userId" jdbcType="INTEGER" property="userid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="userType" jdbcType="VARCHAR" property="usertype" />
+    <result column="userType" jdbcType="INTEGER" property="usertype" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -98,11 +98,11 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert keyProperty="userid" useGeneratedKeys="true" keyColumn="userId" id="insert" parameterType="com.example.ea_system.bean.User">
+  <insert id="insert" parameterType="com.example.ea_system.bean.User" useGeneratedKeys="true" keyColumn="userId" keyProperty="userid">
     insert into user_info (userId, username, password, 
       userType)
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{usertype,jdbcType=VARCHAR})
+      #{usertype,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.example.ea_system.bean.User">
     insert into user_info
@@ -131,7 +131,7 @@
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="usertype != null">
-        #{usertype,jdbcType=VARCHAR},
+        #{usertype,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -154,7 +154,7 @@
         password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.usertype != null">
-        userType = #{record.usertype,jdbcType=VARCHAR},
+        userType = #{record.usertype,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -166,7 +166,7 @@
     set userId = #{record.userid,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      userType = #{record.usertype,jdbcType=VARCHAR}
+      userType = #{record.usertype,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -181,7 +181,7 @@
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="usertype != null">
-        userType = #{usertype,jdbcType=VARCHAR},
+        userType = #{usertype,jdbcType=INTEGER},
       </if>
     </set>
     where userId = #{userid,jdbcType=INTEGER}
@@ -190,7 +190,7 @@
     update user_info
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      userType = #{usertype,jdbcType=VARCHAR}
+      userType = #{usertype,jdbcType=INTEGER}
     where userId = #{userid,jdbcType=INTEGER}
   </update>
 </mapper>

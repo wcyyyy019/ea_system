@@ -20,16 +20,27 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserExMapper userExMapper;
 
+    /**
+     *
+     * @param user
+     * @return  true 表示操作成功   false表示失败
+     * @throws RuntimeException
+     */
     @Override
-    public void addAndUpdate(User user) throws RuntimeException {
-        if (user == null) throw new RuntimeException();
+    public boolean addAndUpdate(User user) throws RuntimeException {
+        if (user == null) return false;
 
         if (user.getUserid() == null) {
-            userMapper.insert(user);
-
+            if(!checkRepeatUsername(user.getUsername())){
+                userMapper.insert(user);
+                return true;
+            }
+            else
+                return false;
         } else {
             userMapper.updateByPrimaryKey(user);
         }
+        return true;
     }
 
     /**
@@ -64,4 +75,28 @@ public class UserServiceImpl implements IUserService {
     public UserEx getUserEx(int userid) throws RuntimeException {
         return userExMapper.checkStatus(userid);
     }
+
+    /**
+     *
+     * @return  返回所有user对象的集合
+     * @throws RuntimeException
+     */
+    @Override
+    public List<User> listAllUser() throws RuntimeException {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUseridIsNotNull();
+        return userMapper.selectByExample(userExample);
+    }
+
+    @Override
+    public boolean checkRepeatUsername(String username) throws RuntimeException {
+        List<User> users = listAllUser();
+        for(User user:
+             users) {
+            if(user.getUsername().equals(username)) return true;
+        }
+        return false;
+    }
+
+
 }
