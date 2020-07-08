@@ -51,6 +51,6 @@
 
 
         <!-- 映射配置 -->
-        <table tableName="check_info" domainObjectName="Check"></table>
+        <table tableName="user_info" domainObjectName="User"></table>
     </context>
 </generatorConfiguration>

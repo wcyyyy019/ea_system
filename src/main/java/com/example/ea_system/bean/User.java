@@ -9,7 +9,7 @@ public class User implements Serializable {
 
     private String password;
 
-    private String usertype;
+    private Integer usertype;
 
     private static final long serialVersionUID = 1L;
 
@@ -37,12 +37,12 @@ public class User implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getUsertype() {
+    public Integer getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(String usertype) {
-        this.usertype = usertype == null ? null : usertype.trim();
+    public void setUsertype(Integer usertype) {
+        this.usertype = usertype;
     }
 
     @Override

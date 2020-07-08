@@ -1,20 +1,20 @@
-package com.example.ea_system;
+package com.example.ea_system.service.impl;
 
 import com.example.ea_system.bean.User;
-import com.example.ea_system.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest
-class EaSystemApplicationTests {
+import static org.junit.jupiter.api.Assertions.*;
+
+class UserServiceImplTest {
 
     @Autowired
     UserServiceImpl userService;
 
-
-
-
+    @Test
+    public void listAllUser() {
+     //
+    }
 }
