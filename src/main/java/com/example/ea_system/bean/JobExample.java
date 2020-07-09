@@ -2,6 +2,7 @@ package com.example.ea_system.bean;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class JobExample {
@@ -103,6 +104,32 @@ public class JobExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andJobidIsNull() {
@@ -636,52 +663,52 @@ public class JobExample {
         }
 
         public Criteria andClosedateEqualTo(Date value) {
-            addCriterion("closeDate =", value, "closedate");
+            addCriterionForJDBCDate("closeDate =", value, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateNotEqualTo(Date value) {
-            addCriterion("closeDate <>", value, "closedate");
+            addCriterionForJDBCDate("closeDate <>", value, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateGreaterThan(Date value) {
-            addCriterion("closeDate >", value, "closedate");
+            addCriterionForJDBCDate("closeDate >", value, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateGreaterThanOrEqualTo(Date value) {
-            addCriterion("closeDate >=", value, "closedate");
+            addCriterionForJDBCDate("closeDate >=", value, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateLessThan(Date value) {
-            addCriterion("closeDate <", value, "closedate");
+            addCriterionForJDBCDate("closeDate <", value, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateLessThanOrEqualTo(Date value) {
-            addCriterion("closeDate <=", value, "closedate");
+            addCriterionForJDBCDate("closeDate <=", value, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateIn(List<Date> values) {
-            addCriterion("closeDate in", values, "closedate");
+            addCriterionForJDBCDate("closeDate in", values, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateNotIn(List<Date> values) {
-            addCriterion("closeDate not in", values, "closedate");
+            addCriterionForJDBCDate("closeDate not in", values, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateBetween(Date value1, Date value2) {
-            addCriterion("closeDate between", value1, value2, "closedate");
+            addCriterionForJDBCDate("closeDate between", value1, value2, "closedate");
             return (Criteria) this;
         }
 
         public Criteria andClosedateNotBetween(Date value1, Date value2) {
-            addCriterion("closeDate not between", value1, value2, "closedate");
+            addCriterionForJDBCDate("closeDate not between", value1, value2, "closedate");
             return (Criteria) this;
         }
 

@@ -54,3 +54,4 @@
         <table tableName="job_info" domainObjectName="Job"></table>
     </context>
 </generatorConfiguration>
+
