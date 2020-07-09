@@ -3,8 +3,8 @@
 <mapper namespace="com.example.ea_system.mapper.Work_ExperienceMapper">
   <resultMap id="BaseResultMap" type="com.example.ea_system.bean.Work_Experience">
     <id column="graduateId" jdbcType="INTEGER" property="graduateid" />
-    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
-    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="startTime" jdbcType="DATE" property="starttime" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
     <result column="workCompany" jdbcType="VARCHAR" property="workcompany" />
     <result column="department" jdbcType="VARCHAR" property="department" />
     <result column="post" jdbcType="VARCHAR" property="post" />
@@ -105,7 +105,7 @@
     insert into work_experience_info (graduateId, startTime, endTime, 
       workCompany, department, post, 
       grade)
-    values (#{graduateid,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+    values (#{graduateid,jdbcType=INTEGER}, #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, 
       #{workcompany,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
       #{grade,jdbcType=VARCHAR})
   </insert>
@@ -139,10 +139,10 @@
         #{graduateid,jdbcType=INTEGER},
       </if>
       <if test="starttime != null">
-        #{starttime,jdbcType=TIMESTAMP},
+        #{starttime,jdbcType=DATE},
       </if>
       <if test="endtime != null">
-        #{endtime,jdbcType=TIMESTAMP},
+        #{endtime,jdbcType=DATE},
       </if>
       <if test="workcompany != null">
         #{workcompany,jdbcType=VARCHAR},
@@ -171,10 +171,10 @@
         graduateId = #{record.graduateid,jdbcType=INTEGER},
       </if>
       <if test="record.starttime != null">
-        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+        startTime = #{record.starttime,jdbcType=DATE},
       </if>
       <if test="record.endtime != null">
-        endTime = #{record.endtime,jdbcType=TIMESTAMP},
+        endTime = #{record.endtime,jdbcType=DATE},
       </if>
       <if test="record.workcompany != null">
         workCompany = #{record.workcompany,jdbcType=VARCHAR},
@@ -196,8 +196,8 @@
   <update id="updateByExample" parameterType="map">
     update work_experience_info
     set graduateId = #{record.graduateid,jdbcType=INTEGER},
-      startTime = #{record.starttime,jdbcType=TIMESTAMP},
-      endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      startTime = #{record.starttime,jdbcType=DATE},
+      endTime = #{record.endtime,jdbcType=DATE},
       workCompany = #{record.workcompany,jdbcType=VARCHAR},
       department = #{record.department,jdbcType=VARCHAR},
       post = #{record.post,jdbcType=VARCHAR},
@@ -210,10 +210,10 @@
     update work_experience_info
     <set>
       <if test="starttime != null">
-        startTime = #{starttime,jdbcType=TIMESTAMP},
+        startTime = #{starttime,jdbcType=DATE},
       </if>
       <if test="endtime != null">
-        endTime = #{endtime,jdbcType=TIMESTAMP},
+        endTime = #{endtime,jdbcType=DATE},
       </if>
       <if test="workcompany != null">
         workCompany = #{workcompany,jdbcType=VARCHAR},
@@ -232,8 +232,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.ea_system.bean.Work_Experience">
     update work_experience_info
-    set startTime = #{starttime,jdbcType=TIMESTAMP},
-      endTime = #{endtime,jdbcType=TIMESTAMP},
+    set startTime = #{starttime,jdbcType=DATE},
+      endTime = #{endtime,jdbcType=DATE},
       workCompany = #{workcompany,jdbcType=VARCHAR},
       department = #{department,jdbcType=VARCHAR},
       post = #{post,jdbcType=VARCHAR},

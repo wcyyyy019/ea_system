@@ -13,7 +13,7 @@ public class Training implements Serializable {
 
     private Date endtime;
 
-    private Date timelimit;
+    private String timelimit;
 
     private String major;
 
@@ -59,12 +59,12 @@ public class Training implements Serializable {
         this.endtime = endtime;
     }
 
-    public Date getTimelimit() {
+    public String getTimelimit() {
         return timelimit;
     }
 
-    public void setTimelimit(Date timelimit) {
-        this.timelimit = timelimit;
+    public void setTimelimit(String timelimit) {
+        this.timelimit = timelimit == null ? null : timelimit.trim();
     }
 
     public String getMajor() {

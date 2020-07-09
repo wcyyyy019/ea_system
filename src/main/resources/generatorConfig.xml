@@ -51,6 +51,10 @@
 
 
         <!-- 映射配置 -->
-        <table tableName="job_info" domainObjectName="Job"></table>
+
+        <table tableName="work_experience_info" domainObjectName="Work_Experience" />
+        <table tableName="training_info" domainObjectName="Training" />
+
     </context>
 </generatorConfiguration>
+

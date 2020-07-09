@@ -10,7 +10,7 @@
     <result column="number" jdbcType="INTEGER" property="number" />
     <result column="salary" jdbcType="DOUBLE" property="salary" />
     <result column="otherPay" jdbcType="VARCHAR" property="otherpay" />
-    <result column="closeDate" jdbcType="TIMESTAMP" property="closedate" />
+    <result column="closeDate" jdbcType="DATE" property="closedate" />
     <result column="described" jdbcType="VARCHAR" property="described" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -112,7 +112,7 @@
       described)
     values (#{jobid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR}, 
       #{requirement,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
-      #{salary,jdbcType=DOUBLE}, #{otherpay,jdbcType=VARCHAR}, #{closedate,jdbcType=TIMESTAMP}, 
+      #{salary,jdbcType=DOUBLE}, #{otherpay,jdbcType=VARCHAR}, #{closedate,jdbcType=DATE}, 
       #{described,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.ea_system.bean.Job">
@@ -175,7 +175,7 @@
         #{otherpay,jdbcType=VARCHAR},
       </if>
       <if test="closedate != null">
-        #{closedate,jdbcType=TIMESTAMP},
+        #{closedate,jdbcType=DATE},
       </if>
       <if test="described != null">
         #{described,jdbcType=VARCHAR},
@@ -216,7 +216,7 @@
         otherPay = #{record.otherpay,jdbcType=VARCHAR},
       </if>
       <if test="record.closedate != null">
-        closeDate = #{record.closedate,jdbcType=TIMESTAMP},
+        closeDate = #{record.closedate,jdbcType=DATE},
       </if>
       <if test="record.described != null">
         described = #{record.described,jdbcType=VARCHAR},
@@ -236,7 +236,7 @@
       number = #{record.number,jdbcType=INTEGER},
       salary = #{record.salary,jdbcType=DOUBLE},
       otherPay = #{record.otherpay,jdbcType=VARCHAR},
-      closeDate = #{record.closedate,jdbcType=TIMESTAMP},
+      closeDate = #{record.closedate,jdbcType=DATE},
       described = #{record.described,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -267,7 +267,7 @@
         otherPay = #{otherpay,jdbcType=VARCHAR},
       </if>
       <if test="closedate != null">
-        closeDate = #{closedate,jdbcType=TIMESTAMP},
+        closeDate = #{closedate,jdbcType=DATE},
       </if>
       <if test="described != null">
         described = #{described,jdbcType=VARCHAR},
@@ -284,7 +284,7 @@
       number = #{number,jdbcType=INTEGER},
       salary = #{salary,jdbcType=DOUBLE},
       otherPay = #{otherpay,jdbcType=VARCHAR},
-      closeDate = #{closedate,jdbcType=TIMESTAMP},
+      closeDate = #{closedate,jdbcType=DATE},
       described = #{described,jdbcType=VARCHAR}
     where jobId = #{jobid,jdbcType=INTEGER}
   </update>

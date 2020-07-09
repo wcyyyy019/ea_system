@@ -4,9 +4,7 @@ import com.example.ea_system.bean.Training;
 import com.example.ea_system.bean.TrainingExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface TrainingMapper {
     long countByExample(TrainingExample example);
 
