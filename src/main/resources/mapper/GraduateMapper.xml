@@ -18,7 +18,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="postalCode" jdbcType="VARCHAR" property="postalcode" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="self-assessment" jdbcType="VARCHAR" property="selfAssessment" />
+    <result column="selfassessment" jdbcType="VARCHAR" property="selfAssessment" />
     <result column="school" jdbcType="VARCHAR" property="school" />
     <result column="major" jdbcType="VARCHAR" property="major" />
     <result column="degree" jdbcType="VARCHAR" property="degree" />
@@ -89,7 +89,7 @@
   </sql>
   <sql id="Base_Column_List">
     graduateId, userId, name, sex, nationality, birthday, maritalStatus, height, weight, 
-    idCardNo, nativePlace, phoneNumber, QQNumber, email, postalCode, address, self-assessment, 
+    idCardNo, nativePlace, phoneNumber, QQNumber, email, postalCode, address, selfassessment,
     school, major, degree, computerRank, firstForeignLanguage, firstLevel, secondForeignLanguage, 
     secondLevel, remark
   </sql>
@@ -129,7 +129,7 @@
       maritalStatus, height, weight, 
       idCardNo, nativePlace, phoneNumber, 
       QQNumber, email, postalCode, 
-      address, self-assessment, school, 
+      address, selfassessment, school,
       major, degree, computerRank, 
       firstForeignLanguage, firstLevel, secondForeignLanguage, 
       secondLevel, remark)
@@ -195,7 +195,7 @@
         address,
       </if>
       <if test="selfAssessment != null">
-        self-assessment,
+        selfassessment,
       </if>
       <if test="school != null">
         school,
@@ -364,7 +364,7 @@
         address = #{record.address,jdbcType=VARCHAR},
       </if>
       <if test="record.selfAssessment != null">
-        self-assessment = #{record.selfAssessment,jdbcType=VARCHAR},
+        selfassessment = #{record.selfAssessment,jdbcType=VARCHAR},
       </if>
       <if test="record.school != null">
         school = #{record.school,jdbcType=VARCHAR},
@@ -416,7 +416,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       postalCode = #{record.postalcode,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
-      self-assessment = #{record.selfAssessment,jdbcType=VARCHAR},
+      selfassessment = #{record.selfAssessment,jdbcType=VARCHAR},
       school = #{record.school,jdbcType=VARCHAR},
       major = #{record.major,jdbcType=VARCHAR},
       degree = #{record.degree,jdbcType=VARCHAR},
@@ -479,7 +479,7 @@
         address = #{address,jdbcType=VARCHAR},
       </if>
       <if test="selfAssessment != null">
-        self-assessment = #{selfAssessment,jdbcType=VARCHAR},
+        selfassessment = #{selfAssessment,jdbcType=VARCHAR},
       </if>
       <if test="school != null">
         school = #{school,jdbcType=VARCHAR},
@@ -528,7 +528,7 @@
       email = #{email,jdbcType=VARCHAR},
       postalCode = #{postalcode,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      self-assessment = #{selfAssessment,jdbcType=VARCHAR},
+      selfassessment = #{selfAssessment,jdbcType=VARCHAR},
       school = #{school,jdbcType=VARCHAR},
       major = #{major,jdbcType=VARCHAR},
       degree = #{degree,jdbcType=VARCHAR},

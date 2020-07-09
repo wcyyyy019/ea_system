@@ -17,7 +17,8 @@ public class GraduateServiceImpl implements IGraduateService {
     public void addAndUpdate(Graduate graduate) throws RuntimeException {
         if (graduate == null) throw new RuntimeException();
 
-        if (graduate.getGraduateid() != null) {
+        if (graduate.getGraduateid() == null) {
+
             graduateMapper.insert(graduate);
 
         } else {

@@ -22,7 +22,7 @@ public class Job implements Serializable {
 
     private Date closedate;
 
-    private String describe;
+    private String described;
 
     private static final long serialVersionUID = 1L;
 
@@ -98,12 +98,12 @@ public class Job implements Serializable {
         this.closedate = closedate;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescribed() {
+        return described;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+    public void setDescribed(String described) {
+        this.described = described == null ? null : described.trim();
     }
 
     @Override
@@ -121,7 +121,7 @@ public class Job implements Serializable {
         sb.append(", salary=").append(salary);
         sb.append(", otherpay=").append(otherpay);
         sb.append(", closedate=").append(closedate);
-        sb.append(", describe=").append(describe);
+        sb.append(", described=").append(described);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

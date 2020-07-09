@@ -11,7 +11,7 @@
     <result column="salary" jdbcType="DOUBLE" property="salary" />
     <result column="otherPay" jdbcType="VARCHAR" property="otherpay" />
     <result column="closeDate" jdbcType="TIMESTAMP" property="closedate" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="described" jdbcType="VARCHAR" property="described" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     jobId, companyId, jobName, requirement, address, number, salary, otherPay, closeDate, 
-    describe
+    described
   </sql>
   <select id="selectByExample" parameterType="com.example.ea_system.bean.JobExample" resultMap="BaseResultMap">
     select
@@ -109,11 +109,11 @@
     insert into job_info (jobId, companyId, jobName, 
       requirement, address, number, 
       salary, otherPay, closeDate, 
-      describe)
+      described)
     values (#{jobid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR}, 
       #{requirement,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
       #{salary,jdbcType=DOUBLE}, #{otherpay,jdbcType=VARCHAR}, #{closedate,jdbcType=TIMESTAMP}, 
-      #{describe,jdbcType=VARCHAR})
+      #{described,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.ea_system.bean.Job">
     insert into job_info
@@ -145,8 +145,8 @@
       <if test="closedate != null">
         closeDate,
       </if>
-      <if test="describe != null">
-        describe,
+      <if test="described != null">
+        described,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -177,8 +177,8 @@
       <if test="closedate != null">
         #{closedate,jdbcType=TIMESTAMP},
       </if>
-      <if test="describe != null">
-        #{describe,jdbcType=VARCHAR},
+      <if test="described != null">
+        #{described,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -218,8 +218,8 @@
       <if test="record.closedate != null">
         closeDate = #{record.closedate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.describe != null">
-        describe = #{record.describe,jdbcType=VARCHAR},
+      <if test="record.described != null">
+        described = #{record.described,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -237,7 +237,7 @@
       salary = #{record.salary,jdbcType=DOUBLE},
       otherPay = #{record.otherpay,jdbcType=VARCHAR},
       closeDate = #{record.closedate,jdbcType=TIMESTAMP},
-      describe = #{record.describe,jdbcType=VARCHAR}
+      described = #{record.described,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -269,8 +269,8 @@
       <if test="closedate != null">
         closeDate = #{closedate,jdbcType=TIMESTAMP},
       </if>
-      <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="described != null">
+        described = #{described,jdbcType=VARCHAR},
       </if>
     </set>
     where jobId = #{jobid,jdbcType=INTEGER}
@@ -285,7 +285,7 @@
       salary = #{salary,jdbcType=DOUBLE},
       otherPay = #{otherpay,jdbcType=VARCHAR},
       closeDate = #{closedate,jdbcType=TIMESTAMP},
-      describe = #{describe,jdbcType=VARCHAR}
+      described = #{described,jdbcType=VARCHAR}
     where jobId = #{jobid,jdbcType=INTEGER}
   </update>
 </mapper>

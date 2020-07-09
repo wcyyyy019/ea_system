@@ -1,8 +1,12 @@
 package com.example.ea_system.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@ApiModel
 public class Graduate implements Serializable {
     private Integer graduateid;
 
@@ -13,7 +17,7 @@ public class Graduate implements Serializable {
     private String sex;
 
     private String nationality;
-
+    @ApiModelProperty(value = "生日 格式如1999/1/1")
     private Date birthday;
 
     private String maritalstatus;

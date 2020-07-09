@@ -25,10 +25,10 @@ public class UserController {
     private IUserService userService;
     @Autowired
     private ICheckService checkService;
-    @Autowired
-    private ICompanyService companyService;
-    @Autowired
-    private IGraduateService graduateService;
+//    @Autowired
+//    private ICompanyService companyService;
+//    @Autowired
+//    private IGraduateService graduateService;
 
     @GetMapping("/loginin")
     @ApiOperation("登录校验")
@@ -43,10 +43,10 @@ public class UserController {
         if (hasExieted){
             int id = user.getUserid();
             checkService.init(id);
-            if(user.getUsertype()==1)
-                companyService.init(id);
-            else if(user.getUsertype()==2)
-                graduateService.init(id);
+//            if(user.getUsertype()==1)
+//                companyService.init(id);
+//            else if(user.getUsertype()==2)
+//                graduateService.init(id);
             return MessageUtil.success(user.getUserid());
         }
         else{
