@@ -4,9 +4,7 @@ import com.example.ea_system.bean.Job;
 import com.example.ea_system.bean.JobExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface JobMapper {
     long countByExample(JobExample example);
 
