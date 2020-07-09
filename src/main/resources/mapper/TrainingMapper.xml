@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.example.ea_system.bean.Training">
     <id column="graduateId" jdbcType="INTEGER" property="graduateid" />
     <result column="trainingType" jdbcType="VARCHAR" property="trainingtype" />
-    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
-    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
-    <result column="timeLimit" jdbcType="TIMESTAMP" property="timelimit" />
+    <result column="startTime" jdbcType="DATE" property="starttime" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
+    <result column="timeLimit" jdbcType="VARCHAR" property="timelimit" />
     <result column="major" jdbcType="VARCHAR" property="major" />
     <result column="organization" jdbcType="VARCHAR" property="organization" />
     <result column="content" jdbcType="VARCHAR" property="content" />
@@ -110,8 +110,8 @@
       endTime, timeLimit, major, 
       organization, content, cost, 
       result)
-    values (#{graduateid,jdbcType=INTEGER}, #{trainingtype,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, 
-      #{endtime,jdbcType=TIMESTAMP}, #{timelimit,jdbcType=TIMESTAMP}, #{major,jdbcType=VARCHAR}, 
+    values (#{graduateid,jdbcType=INTEGER}, #{trainingtype,jdbcType=VARCHAR}, #{starttime,jdbcType=DATE}, 
+      #{endtime,jdbcType=DATE}, #{timelimit,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, 
       #{organization,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{cost,jdbcType=DECIMAL}, 
       #{result,jdbcType=VARCHAR})
   </insert>
@@ -157,13 +157,13 @@
         #{trainingtype,jdbcType=VARCHAR},
       </if>
       <if test="starttime != null">
-        #{starttime,jdbcType=TIMESTAMP},
+        #{starttime,jdbcType=DATE},
       </if>
       <if test="endtime != null">
-        #{endtime,jdbcType=TIMESTAMP},
+        #{endtime,jdbcType=DATE},
       </if>
       <if test="timelimit != null">
-        #{timelimit,jdbcType=TIMESTAMP},
+        #{timelimit,jdbcType=VARCHAR},
       </if>
       <if test="major != null">
         #{major,jdbcType=VARCHAR},
@@ -198,13 +198,13 @@
         trainingType = #{record.trainingtype,jdbcType=VARCHAR},
       </if>
       <if test="record.starttime != null">
-        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+        startTime = #{record.starttime,jdbcType=DATE},
       </if>
       <if test="record.endtime != null">
-        endTime = #{record.endtime,jdbcType=TIMESTAMP},
+        endTime = #{record.endtime,jdbcType=DATE},
       </if>
       <if test="record.timelimit != null">
-        timeLimit = #{record.timelimit,jdbcType=TIMESTAMP},
+        timeLimit = #{record.timelimit,jdbcType=VARCHAR},
       </if>
       <if test="record.major != null">
         major = #{record.major,jdbcType=VARCHAR},
@@ -230,9 +230,9 @@
     update training_info
     set graduateId = #{record.graduateid,jdbcType=INTEGER},
       trainingType = #{record.trainingtype,jdbcType=VARCHAR},
-      startTime = #{record.starttime,jdbcType=TIMESTAMP},
-      endTime = #{record.endtime,jdbcType=TIMESTAMP},
-      timeLimit = #{record.timelimit,jdbcType=TIMESTAMP},
+      startTime = #{record.starttime,jdbcType=DATE},
+      endTime = #{record.endtime,jdbcType=DATE},
+      timeLimit = #{record.timelimit,jdbcType=VARCHAR},
       major = #{record.major,jdbcType=VARCHAR},
       organization = #{record.organization,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
@@ -249,13 +249,13 @@
         trainingType = #{trainingtype,jdbcType=VARCHAR},
       </if>
       <if test="starttime != null">
-        startTime = #{starttime,jdbcType=TIMESTAMP},
+        startTime = #{starttime,jdbcType=DATE},
       </if>
       <if test="endtime != null">
-        endTime = #{endtime,jdbcType=TIMESTAMP},
+        endTime = #{endtime,jdbcType=DATE},
       </if>
       <if test="timelimit != null">
-        timeLimit = #{timelimit,jdbcType=TIMESTAMP},
+        timeLimit = #{timelimit,jdbcType=VARCHAR},
       </if>
       <if test="major != null">
         major = #{major,jdbcType=VARCHAR},
@@ -278,9 +278,9 @@
   <update id="updateByPrimaryKey" parameterType="com.example.ea_system.bean.Training">
     update training_info
     set trainingType = #{trainingtype,jdbcType=VARCHAR},
-      startTime = #{starttime,jdbcType=TIMESTAMP},
-      endTime = #{endtime,jdbcType=TIMESTAMP},
-      timeLimit = #{timelimit,jdbcType=TIMESTAMP},
+      startTime = #{starttime,jdbcType=DATE},
+      endTime = #{endtime,jdbcType=DATE},
+      timeLimit = #{timelimit,jdbcType=VARCHAR},
       major = #{major,jdbcType=VARCHAR},
       organization = #{organization,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},

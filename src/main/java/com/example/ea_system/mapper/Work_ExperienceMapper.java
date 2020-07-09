@@ -4,9 +4,7 @@ import com.example.ea_system.bean.Work_Experience;
 import com.example.ea_system.bean.Work_ExperienceExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface Work_ExperienceMapper {
     long countByExample(Work_ExperienceExample example);
 
