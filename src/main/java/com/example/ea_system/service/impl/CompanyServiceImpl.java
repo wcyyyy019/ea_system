@@ -17,7 +17,7 @@ public class CompanyServiceImpl implements ICompanyService {
     public void addAndUpdate(Company company) throws RuntimeException {
         if (company == null) throw new RuntimeException();
 
-        if (company.getCompanyid() != null) {
+        if (company.getCompanyid() == null) {
             companyMapper.insert(company);
 
         } else {
