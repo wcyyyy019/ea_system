@@ -1,20 +1,28 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2020/7/10
+  Time: 15:02
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>login UI</title>
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 <div class="box">
     <h2>大学生就业咨询</h2>
-    <form>
+    <form action="User/loginin">
         <div class="inputBox">
-            <input type="text" name="" required="">
+            <input type="text" name="username" required="required">
             <label>用户名</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="" required="">
+            <input type="password" name="password" required="required">
             <label>密码</label>
         </div>
         <div>

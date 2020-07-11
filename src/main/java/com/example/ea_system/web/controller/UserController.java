@@ -3,20 +3,18 @@ package com.example.ea_system.web.controller;
 import com.example.ea_system.bean.User;
 import com.example.ea_system.bean.ex.UserEx;
 import com.example.ea_system.service.ICheckService;
-import com.example.ea_system.service.ICompanyService;
-import com.example.ea_system.service.IGraduateService;
 import com.example.ea_system.service.IUserService;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/User")
 @Api(description = "用户管理")
 public class UserController {
@@ -30,10 +28,12 @@ public class UserController {
 //    @Autowired
 //    private IGraduateService graduateService;
 
-    @GetMapping("/loginin")
+    @RequestMapping("/loginin")
     @ApiOperation("登录校验")
-    public Message login(String username,String password){
-        return MessageUtil.success(userService.hasExist(username,password));
+    public String login(String username,String password){
+        if(userService.hasExist(username,password)!=0)
+            return "hello";
+        return "register";
     }
 
     @PostMapping("/add")
