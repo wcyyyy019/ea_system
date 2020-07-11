@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 @Controller
 @RequestMapping("/User")
 @Api(description = "用户管理")
@@ -28,7 +30,7 @@ public class UserController {
 //    @Autowired
 //    private IGraduateService graduateService;
 
-    @RequestMapping("/loginin")
+    @GetMapping("/loginin")
     @ApiOperation("登录校验")
     public String login(String username,String password){
         if(userService.hasExist(username,password)!=0)
