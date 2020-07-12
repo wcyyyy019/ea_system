@@ -1,30 +1,25 @@
 {
-	"contentManagement": [{
-			"title": "系统设置",
-			"icon": "&#xe716;",
-			"href": "",
-			"spread": true,
-			"children": [{
-				"title": "模块管理",
-				"icon": "",
-				"href": "page/tree/tree.html",
-				"spread": false
-			}]
-		}, {
+	"contentManagement": [ {
 			"title": "用户中心",
 			"icon": "&#xe770;",
 			"href": "",
 			"spread": true,
 			"children": [{
-					"title": "用户中心",
+					"title": "修改个人资料",
 					"icon": "",
-					"href": "page/user/userList.html",
+					"href": "page/user/userInfoPersonage.html",
 					"spread": false
 				},
 				{
-					"title": "会员等级",
+					"title": "工作经历",
 					"icon": "",
-					"href": "page/user/userGrade.html",
+					"href": "page/news/newsList.html",
+					"spread": false
+				},
+				{
+					"title": "培训记录",
+					"icon": "",
+					"href": "page/news/newsList.html",
 					"spread": false
 				}
 			]
@@ -34,25 +29,21 @@
 			"href": "",
 			"spread": true,
 			"children": [{
-					"title": "404页面",
+					"title": "企业列表",
 					"icon": "",
-					"href": "page/404/404.html",
+					"href": "page/news/newsListCompany.html",
+					"spread": false
+				},
+				{
+					"title": "喜爱企业列表",
+					"icon": "",
+					"href": "page/news/newsListCompany.html",
 					"spread": false
 				},
 				{
 					"title": "简历列表",
 					"icon": "",
 					"href": "page/news/newsList.html",
-					"spread": false
-				}, {
-					"title": "图片管理",
-					"icon": "",
-					"href": "page/img/images.html",
-					"spread": false
-				}, {
-					"title": "轮播",
-					"icon": "",
-					"href": "page/carousel/carousel.html",
 					"spread": false
 				}
 				

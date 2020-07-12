@@ -19,10 +19,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
             {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
-            {field: 'newsName', title: '简历标题', width:350},
-			{field: 'picture',title: '缩略图',align: 'center',width: 170,templet: '#thumbnailImages'}, 
-            {field: 'newsStatus', title: '发布状态',  align:'center',templet:"#newsStatus"},
-            {field: 'newsTop', title: '是否置顶', align:'center', templet:function(d){
+            {field: 'newsName', title: '企业名称', width:350},
+            {field: 'newsTop', title: '喜爱', align:'center', templet:function(d){
                 return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
             }},
             {field: 'newsTime', title: '发布时间', align:'center', minWidth:110, templet:function(d){
@@ -49,9 +47,9 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         setTimeout(function(){
             layer.close(index);
             if(data.elem.checked){
-                layer.msg("置顶成功！");
+                layer.msg("喜欢设置成功！");
             }else{
-                layer.msg("取消置顶成功！");
+                layer.msg("取消喜欢成功！");
             }
         },500);
     })
@@ -80,7 +78,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 			area: ['90%', '90%'],
 			fixed: false, //不固定
 			maxmin: true,
-            content : "newsAdd.html",
+            content : "newsAddPerson.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
@@ -140,11 +138,11 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 // $.get("删除简历接口",{
                 //     newsId : data.newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
-                    tableIns.reload();
-                    layer.close(index);
+                tableIns.reload();
+                layer.close(index);
                 // })
             });
-        } 
+        }
     });
 
 })

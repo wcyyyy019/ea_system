@@ -19,13 +19,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
             {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
-            {field: 'newsName', title: '文章标题', width:350},
-			{field: 'picture',title: '缩略图',align: 'center',width: 170,templet: '#thumbnailImages'}, 
-            {field: 'newsStatus', title: '发布状态',  align:'center',templet:"#newsStatus"},
-            {field: 'newsLook', title: '浏览权限', align:'center'},
-            {field: 'newsTop', title: '是否置顶', align:'center', templet:function(d){
-                return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
-            }},
+            {field: 'newsName', title: '简历标题', width:350},
+
             {field: 'newsTime', title: '发布时间', align:'center', minWidth:110, templet:function(d){
                 return d.newsTime.substring(0,10);
             }},
@@ -76,7 +71,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
-            title : "添加文章",
+            title : "添加简历",
             type : 2,
 			area: ['90%', '90%'],
 			fixed: false, //不固定
@@ -95,7 +90,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     form.render();
                 }
                 setTimeout(function(){
-                    layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回简历列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 },500)
@@ -116,8 +111,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             for (var i in data) {
                 newsId.push(data[i].newsId);
             }
-            layer.confirm('确定删除选中的文章？', {icon: 3, title: '提示信息'}, function (index) {
-                // $.get("删除文章接口",{
+            layer.confirm('确定删除选中的简历？', {icon: 3, title: '提示信息'}, function (index) {
+                // $.get("删除简历接口",{
                 //     newsId : newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
                 tableIns.reload();
@@ -125,7 +120,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 // })
             })
         }else{
-            layer.msg("请选择需要删除的文章");
+            layer.msg("请选择需要删除的简历");
         }
     })
 
@@ -137,8 +132,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         if(layEvent === 'edit'){ //编辑
             addNews(data);
         } else if(layEvent === 'del'){ //删除
-            layer.confirm('确定删除此文章？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除文章接口",{
+            layer.confirm('确定删除此简历？',{icon:3, title:'提示信息'},function(index){
+                // $.get("删除简历接口",{
                 //     newsId : data.newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
                     tableIns.reload();

@@ -71,10 +71,7 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
     })
     form.on("submit(addNews)",function(data){
         //截取文章内容中的一部分文字放入文章摘要
-        var abstract = layedit.getText(editIndex).substring(0,50);
-        //弹出loading
-        var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
-        // 实际使用时的提交信息
+
         // $.post("上传路径",{
         //     newsName : $(".newsName").val(),  //文章标题
         //     abstract : $(".abstract").val(),  //文章摘要
@@ -88,8 +85,6 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
         //
         // })
         setTimeout(function(){
-            top.layer.close(index);
-            top.layer.msg("文章添加成功！");
             layer.closeAll("iframe");
             //刷新父页面
             parent.location.reload();
