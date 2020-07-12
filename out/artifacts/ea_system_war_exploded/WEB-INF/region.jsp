@@ -1,8 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
+<<<<<<< HEAD:web/WEB-INF/region.jsp
   User: xiao
   Date: 2020/7/11
   Time: 14:34
+=======
+  User: Administrator
+  Date: 2020/7/10
+  Time: 15:05
+>>>>>>> 59ce9c6266c5c7c6b4e381c86dddf84a9e73c85a:src/main/webapp/WEB-INF/register.jsp
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +16,7 @@
 <head>
     <meta charset="utf-8">
     <title>login UI</title>
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 <div class="box">
