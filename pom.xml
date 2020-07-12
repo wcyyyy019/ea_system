@@ -115,6 +115,15 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <!-- src/main/resources下的指定资源放行 -->
+                <includes>
+                    <include>**/Login.jsp</include>
+                    <include>**/hello.jsp</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
         </resources>
     </build>
 

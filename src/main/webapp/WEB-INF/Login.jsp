@@ -18,11 +18,11 @@
     <h2>大学生就业咨询</h2>
     <form action="User/loginin">
         <div class="inputBox">
-            <input type="text" name="username" required="required">
+            <input type="text" name="username" required="false">
             <label>用户名</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="password" required="required">
+            <input type="password" name="password" required="false">
             <label>密码</label>
         </div>
         <div>

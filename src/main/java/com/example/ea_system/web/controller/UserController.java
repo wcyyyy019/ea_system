@@ -10,15 +10,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.util.Arrays;
+import java.util.Map;
+
+//@RestController
 @Controller
 @RequestMapping("/User")
 @Api(description = "用户管理")
+@SessionAttributes("user")
 public class UserController {
 
     @Autowired
@@ -30,11 +31,27 @@ public class UserController {
 //    @Autowired
 //    private IGraduateService graduateService;
 
-    @GetMapping("/loginin")
+
+    @ModelAttribute
+    public void test1(String username,Map<String,Object> map){
+        if(username.equals("123456")){
+            map.put("test",Arrays.asList("Tom","Jerry","Mike"));
+        }else {
+            map.put("test",Arrays.asList(username));
+        }
+    }
+
+    @RequestMapping("/loginin")
     @ApiOperation("登录校验")
-    public String login(String username,String password){
-        if(userService.hasExist(username,password)!=0)
+    public String login(String username, String password, Map<String,Object> map){
+        int id;
+        if((id=userService.hasExist(username,password))!=0){
+            UserEx userEx=userService.getUserEx(id);
+            map.put("user",userEx);
+//            map.put("name", Arrays.asList("Tom","Jerry","Mike"));
             return "hello";
+        }
+
         return "register";
     }
 
