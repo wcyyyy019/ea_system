@@ -1,6 +1,6 @@
 layui.use(['form','layer','layedit','laydate','upload'],function(){
     var form = layui.form
-    layer = parent.layer === undefined ? layui.layer : top.layer,
+        layer = parent.layer === undefined ? layui.layer : top.layer,
         laypage = layui.laypage,
         upload = layui.upload,
         layedit = layui.layedit,
@@ -8,6 +8,7 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
         $ = layui.jquery;
 
     //用于同步编辑器内容到textarea
+    layedit.sync(editIndex);
 
     //上传缩略图
     upload.render({
@@ -15,15 +16,15 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
         url: '../../json/userface.json',
         method : "get",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
         done: function(res, index, upload){
-
+           
         },
-        before: function(obj) {
-            //预读本地文件示例，不支持ie8
-            obj.preview(function(index, file, result) {
-                $('.thumbImg').attr('src', result);
-                $('.thumbBox').css("background","#fff");
-            });
-        },
+		before: function(obj) {
+			//预读本地文件示例，不支持ie8
+			obj.preview(function(index, file, result) {
+				$('.thumbImg').attr('src', result);
+				$('.thumbBox').css("background","#fff");
+			});
+		},
     });
 
     //格式化时间

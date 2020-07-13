@@ -4,22 +4,17 @@
 			"icon": "&#xe770;",
 			"href": "",
 			"spread": true,
-			"children": [{
-					"title": "修改个人资料",
-					"icon": "",
-					"href": "page/user/userInfoPersonage.html",
-					"spread": false
-				},
+			"children": [
 				{
 					"title": "工作经历",
 					"icon": "",
-					"href": "page/news/newsList.html",
+					"href": "page/news/newsListJob.html",
 					"spread": false
 				},
 				{
 					"title": "培训记录",
 					"icon": "",
-					"href": "page/news/newsList.html",
+					"href": "page/news/newsListTrain.html",
 					"spread": false
 				}
 			]
