@@ -17,7 +17,7 @@ import java.util.Map;
 
 //@RestController
 @Controller
-@RequestMapping("/User")
+//@RequestMapping("/User")
 @Api(description = "用户管理")
 @SessionAttributes("user")
 public class UserController {

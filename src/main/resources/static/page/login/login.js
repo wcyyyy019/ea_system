@@ -14,7 +14,7 @@ layui.use(['form', 'layer', 'jquery'], function() {
 				time: false,
 				shade: 0.8
 			});
-			window.location.href = "../../index.html";
+			window.location.href = "../../../../webapp/WEB-INF/index.html";
 		}, 1000);
 		return false;
 	})

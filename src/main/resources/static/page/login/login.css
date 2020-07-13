@@ -23,7 +23,7 @@ html,body,form{
 .login-box .canvaszz {
 	width: 100%;
 	height: 100%;
-	background-image: url(./img/in_top_bj.jpg);
+	background-image: url(img/in_top_bj.jpg);
 	background-size: 100% 100%;
 	position: fixed;
 	top: 0;
@@ -50,7 +50,7 @@ html,body,form{
 	display: inline-block;
 	width: 50px;
 	height: 2px;
-	background: url(./img/login-tit.png)
+	background: url(img/login-tit.png)
 }
 
 .tit-bg.left {
@@ -81,7 +81,7 @@ html,body,form{
 
 .login-box .signup .gv {
 	text-decoration: none;
-	background: url(./img/nav_gv.png) repeat 0px 0px;
+	background: url(img/nav_gv.png) repeat 0px 0px;
 	width: 130px;
 	height: 43px;
 	display: inline-block;
@@ -100,7 +100,7 @@ html,body,form{
 }
 
 .login-box .signup .gv:hover {
-	background: url(./img/nav_gv.png) repeat 0px -43px;
+	background: url(img/nav_gv.png) repeat 0px -43px;
 	color: #fff;
 	-webkit-box-shadow: 0 0 6px #1d7eb8;
 	transition-duration: 0.5s;
