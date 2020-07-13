@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.ea_system.mapper.FavouriteMapper">
+<mapper namespace="com.example.ea_system.mapper.FAvouriteMapper">
   <resultMap id="BaseResultMap" type="com.example.ea_system.bean.Favourite">
     <id column="favouriteId" jdbcType="INTEGER" property="favouriteid" />
     <result column="graduateId" jdbcType="INTEGER" property="graduateid" />
     <result column="companyId" jdbcType="INTEGER" property="companyid" />
-    <result column="check" jdbcType="TINYINT" property="check" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    favouriteId, graduateId, companyId, check
+    favouriteId, graduateId, companyId
   </sql>
   <select id="selectByExample" parameterType="com.example.ea_system.bean.FavouriteExample" resultMap="BaseResultMap">
     select
@@ -99,10 +98,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.ea_system.bean.Favourite">
-    insert into favourite_info (favouriteId, graduateId, companyId, 
-      check)
-    values (#{favouriteid,jdbcType=INTEGER}, #{graduateid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}, 
-      #{check,jdbcType=TINYINT})
+    insert into favourite_info (favouriteId, graduateId, companyId
+      )
+    values (#{favouriteid,jdbcType=INTEGER}, #{graduateid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.example.ea_system.bean.Favourite">
     insert into favourite_info
@@ -116,9 +115,6 @@
       <if test="companyid != null">
         companyId,
       </if>
-      <if test="check != null">
-        check,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="favouriteid != null">
@@ -129,9 +125,6 @@
       </if>
       <if test="companyid != null">
         #{companyid,jdbcType=INTEGER},
-      </if>
-      <if test="check != null">
-        #{check,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -153,9 +146,6 @@
       <if test="record.companyid != null">
         companyId = #{record.companyid,jdbcType=INTEGER},
       </if>
-      <if test="record.check != null">
-        check = #{record.check,jdbcType=TINYINT},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -165,8 +155,7 @@
     update favourite_info
     set favouriteId = #{record.favouriteid,jdbcType=INTEGER},
       graduateId = #{record.graduateid,jdbcType=INTEGER},
-      companyId = #{record.companyid,jdbcType=INTEGER},
-      check = #{record.check,jdbcType=TINYINT}
+      companyId = #{record.companyid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -180,17 +169,13 @@
       <if test="companyid != null">
         companyId = #{companyid,jdbcType=INTEGER},
       </if>
-      <if test="check != null">
-        check = #{check,jdbcType=TINYINT},
-      </if>
     </set>
     where favouriteId = #{favouriteid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.ea_system.bean.Favourite">
     update favourite_info
     set graduateId = #{graduateid,jdbcType=INTEGER},
-      companyId = #{companyid,jdbcType=INTEGER},
-      check = #{check,jdbcType=TINYINT}
+      companyId = #{companyid,jdbcType=INTEGER}
     where favouriteId = #{favouriteid,jdbcType=INTEGER}
   </update>
 </mapper>

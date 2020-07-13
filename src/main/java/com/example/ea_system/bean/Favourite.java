@@ -9,8 +9,6 @@ public class Favourite implements Serializable {
 
     private Integer companyid;
 
-    private Byte check;
-
     private static final long serialVersionUID = 1L;
 
     public Integer getFavouriteid() {
@@ -37,14 +35,6 @@ public class Favourite implements Serializable {
         this.companyid = companyid;
     }
 
-    public Byte getCheck() {
-        return check;
-    }
-
-    public void setCheck(Byte check) {
-        this.check = check;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -54,7 +44,6 @@ public class Favourite implements Serializable {
         sb.append(", favouriteid=").append(favouriteid);
         sb.append(", graduateid=").append(graduateid);
         sb.append(", companyid=").append(companyid);
-        sb.append(", check=").append(check);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

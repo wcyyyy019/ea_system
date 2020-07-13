@@ -283,66 +283,6 @@ public class FavouriteExample {
             addCriterion("companyId not between", value1, value2, "companyid");
             return (Criteria) this;
         }
-
-        public Criteria andCheckIsNull() {
-            addCriterion("check is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckIsNotNull() {
-            addCriterion("check is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckEqualTo(Byte value) {
-            addCriterion("check =", value, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckNotEqualTo(Byte value) {
-            addCriterion("check <>", value, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckGreaterThan(Byte value) {
-            addCriterion("check >", value, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckGreaterThanOrEqualTo(Byte value) {
-            addCriterion("check >=", value, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckLessThan(Byte value) {
-            addCriterion("check <", value, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckLessThanOrEqualTo(Byte value) {
-            addCriterion("check <=", value, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckIn(List<Byte> values) {
-            addCriterion("check in", values, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckNotIn(List<Byte> values) {
-            addCriterion("check not in", values, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckBetween(Byte value1, Byte value2) {
-            addCriterion("check between", value1, value2, "check");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckNotBetween(Byte value1, Byte value2) {
-            addCriterion("check not between", value1, value2, "check");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {
