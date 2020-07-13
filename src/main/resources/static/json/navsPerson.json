@@ -26,7 +26,7 @@
 			"children": [{
 					"title": "企业列表",
 					"icon": "",
-					"href": "page/news/newsListCompany.html",
+					"href": "page/news/newsListSeeCompany.html",
 					"spread": false
 				},
 				{

@@ -32,14 +32,14 @@ public class UserController {
 //    private IGraduateService graduateService;
 
 
-    @ModelAttribute
-    public void test1(String username,Map<String,Object> map){
-        if(username.equals("123456")){
-            map.put("test",Arrays.asList("Tom","Jerry","Mike"));
-        }else {
-            map.put("test",Arrays.asList(username));
-        }
-    }
+//    @ModelAttribute
+//    public void test1(String username,Map<String,Object> map){
+//        if(username.equals("123456")){
+//            map.put("test",Arrays.asList("Tom","Jerry","Mike"));
+//        }else {
+//            map.put("test",Arrays.asList(username));
+//        }
+//    }
 
     @RequestMapping("/loginin")
     @ApiOperation("登录校验")
@@ -49,7 +49,7 @@ public class UserController {
             UserEx userEx=userService.getUserEx(id);
             map.put("user",userEx);
 //            map.put("name", Arrays.asList("Tom","Jerry","Mike"));
-            return "indexPerson";
+            return "indexCompany";
         }
 
         return "register";
@@ -93,7 +93,7 @@ public class UserController {
         return MessageUtil.success(userEx);
     }
 
-    @GetMapping("/getAll")
+    @RequestMapping("/getAll")
     @ApiOperation("查询所有用户")
     public Message listAllUser(){
        return MessageUtil.success(userService.listAllUser());
