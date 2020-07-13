@@ -4,9 +4,7 @@ import com.example.ea_system.bean.Favourite;
 import com.example.ea_system.bean.FavouriteExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface FavouriteMapper {
     long countByExample(FavouriteExample example);
 
