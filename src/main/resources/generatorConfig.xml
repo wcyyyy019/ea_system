@@ -52,7 +52,7 @@
 
         <!-- 映射配置 -->
 
-        <table tableName="favourite_info" domainObjectName="Favourite" />
+        <table tableName="loginer" domainObjectName="Loginer" />
 
     </context>
 </generatorConfiguration>

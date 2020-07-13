@@ -16,5 +16,7 @@ public interface IUserService {
     //列出所有用户信息
     List<User> listAllUser() throws RuntimeException;
 
+    User getUser(int userid) throws RuntimeException;
+
     boolean checkRepeatUsername(String username) throws RuntimeException;
 }

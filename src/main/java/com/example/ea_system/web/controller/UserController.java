@@ -1,11 +1,14 @@
 package com.example.ea_system.web.controller;
 
+import com.example.ea_system.bean.Loginer;
 import com.example.ea_system.bean.User;
 import com.example.ea_system.bean.ex.UserEx;
 import com.example.ea_system.service.ICheckService;
+import com.example.ea_system.service.ILoginerService;
 import com.example.ea_system.service.IUserService;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
+import com.example.ea_system.util.UIMessage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +16,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //@RestController
 @Controller
 //@RequestMapping("/User")
+
 @Api(description = "用户管理")
-//@SessionAttributes("user")
+@SessionAttributes("loginer")
 public class UserController {
 
     @Autowired
     private IUserService userService;
     @Autowired
     private ICheckService checkService;
+    @Autowired
+    private ILoginerService loginerService;
 //    @Autowired
 //    private ICompanyService companyService;
 //    @Autowired
@@ -43,19 +50,53 @@ public class UserController {
 
     @RequestMapping("/loginin")
     @ApiOperation("登录校验")
-    public String login(String username, String password, Map<String,Object> map){
+    public String login(String username, String password, Map<String,Object> map) throws Exception {
         int id;
         if((id=userService.hasExist(username,password))!=0){
             UserEx userEx=userService.getUserEx(id);
-            map.put("user",userEx);
-            if(userEx.getUsertype()==2)
-            return "indexPerson";
-            else if(userEx.getUsertype()==1)
+
+            Loginer loginer = new Loginer();
+            loginer.setUserid(userEx.getUserid());
+            loginer.setPassword(userEx.getPassword());
+            loginer.setUsername(userEx.getUsername());
+            loginerService.NewLoginer(loginer);
+            map.put("loginer",loginer);
+            if(userEx.getUsertype()==2){
+                return "indexPerson";
+            }
+
+            else if(userEx.getUsertype()==1){
+
                 return "indexCompany";
+            }
+
         }
 
         return "Login";
     }
+
+
+    @RequestMapping("/loginout")
+    public String loginout(Loginer loginer) throws Exception {
+         loginerService.DeleteLoginer();
+         return "Login";
+    }
+
+
+    @RequestMapping("/changePassword")
+    public void changePassword(String oldPwd,String NewPwd) throws Exception {
+        List<Loginer> loginers = loginerService.getLoginer();
+        Loginer loginer = loginers.get(0);
+        if(oldPwd==loginer.getPassword()){
+            int id = loginer.getUserid();
+
+            User user = userService.getUser(id);
+            user.setPassword(NewPwd);
+            userService.addAndUpdate(user);
+        }
+
+    }
+
 
     @PostMapping("/add")
     @ApiOperation("增加用户")

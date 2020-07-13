@@ -8,7 +8,7 @@
     //新闻列表
     var tableIns = table.render({
 		  elem: '#newsList',
-		  url : '../../json/newsList.json',
+		  url : '/Resume/selectAll',
 		  cellMinWidth : 95,
 		  page : true,
 		  //toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
@@ -18,12 +18,8 @@
 		  id : "newsListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
-            {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
-            {field: 'newsName', title: '简历标题', width:350},
-
-            {field: 'newsTime', title: '发布时间', align:'center', minWidth:110, templet:function(d){
-                return d.newsTime.substring(0,10);
-            }},
+            {field: 'resumeid', title: 'ID', width:60, align:"center" ,fixed:"left"},
+            {field: 'title', title: '简历标题', width:350},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
 		done: function(res, curr, count) {

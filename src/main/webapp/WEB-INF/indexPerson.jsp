@@ -58,7 +58,7 @@
                         <dd><a href="javascript:;" data-url="page/user/userInfoPersonage.html"><i class="layui-icon">&#xe66f;</i><cite>个人资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="layui-icon ">&#xe770;</i><cite>修改密码</cite></a></dd>
 
-                        <dd><a href="page/login2/login.html" class="signOut"><i class="layui-icon">&#xe682;</i><cite>退出</cite></a></dd>
+                        <dd><a href="/loginout" class="signOut"><i class="layui-icon">&#xe682;</i><cite>退出</cite></a></dd>
                     </dl>
                 </li>
             </ul>

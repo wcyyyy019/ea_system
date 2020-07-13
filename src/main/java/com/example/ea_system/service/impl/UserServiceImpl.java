@@ -88,6 +88,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public User getUser(int userid) throws RuntimeException {
+        return userMapper.selectByPrimaryKey(userid);
+    }
+
+    @Override
     public boolean checkRepeatUsername(String username) throws RuntimeException {
         List<User> users = listAllUser();
         for(User user:

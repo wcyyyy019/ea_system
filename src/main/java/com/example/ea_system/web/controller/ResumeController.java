@@ -4,16 +4,20 @@ import com.example.ea_system.bean.Resume;
 import com.example.ea_system.service.IResumeService;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
+import com.example.ea_system.util.UIMessage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/Resume")
 @Api(description = "简历信息")
 public class ResumeController {
@@ -21,12 +25,19 @@ public class ResumeController {
     @Autowired
     private IResumeService resumeService;
 
-    @GetMapping("selectAll")
+    @RequestMapping("/selectAll")
     @ApiOperation("查询所有信息")
-    public Message select()
+    @ResponseBody
+    public UIMessage<Resume> select()
     {
         List<Resume> list=resumeService.selectAll();
-       return MessageUtil.success(list);
+        UIMessage<Resume> resumeUIMessage = new UIMessage<Resume>();
+        resumeUIMessage.setCode(0);
+        resumeUIMessage.setMsg("成功");
+        resumeUIMessage.setCount((long)list.size());
+        resumeUIMessage.setData(list);
+//        System.out.println(111);
+       return resumeUIMessage;
     }
 
     @GetMapping("selectByID")
