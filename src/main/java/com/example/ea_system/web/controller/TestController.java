@@ -10,7 +10,7 @@ import java.util.Map;
 @Controller
 public class TestController {
 
-    @RequestMapping("/index.do")
+    @RequestMapping("/index")
     public String TestDemo(Map<String,Object> map){
 //        map.put("name", Arrays.asList("Tom","Jerry","Mike"));
         return "Login";

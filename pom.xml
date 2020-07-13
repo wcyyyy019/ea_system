@@ -111,7 +111,15 @@
                     <include>**/*.yml</include>
                     <include>**/*.xml</include>
                     <include>**/*.css</include>
+                    <include>**/*.html</include>
+                    <include>**/*.js</include>
                     <include>**/*.jpg</include>
+                    <include>**/*.json</include>
+                    <include>**/**</include>
+                    <include>**/**/*.html</include>
+                    <include>**/**/*.js</include>
+                    <include>**/**/*.css</include>
+                    <include>**/**/*.jpg</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
