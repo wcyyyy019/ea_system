@@ -20,13 +20,8 @@
 					"icon": "",
 					"href": "page/user/userList.html",
 					"spread": false
-				},
-				{
-					"title": "会员等级",
-					"icon": "",
-					"href": "page/user/userGrade.html",
-					"spread": false
 				}
+
 			]
 		}, {
 			"title": "其他页面",
