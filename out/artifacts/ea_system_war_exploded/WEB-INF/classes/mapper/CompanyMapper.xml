@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ea_system.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.example.ea_system.bean.Company">
+    <id column="companyId" jdbcType="INTEGER" property="companyid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phoneNumber" jdbcType="INTEGER" property="phonenumber" />
+    <result column="linkMan" jdbcType="VARCHAR" property="linkman" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    companyId, userId, name, address, phoneNumber, linkMan, email, website
+  </sql>
+  <select id="selectByExample" parameterType="com.example.ea_system.bean.CompanyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company_info
+    where companyId = #{companyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company_info
+    where companyId = #{companyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.ea_system.bean.CompanyExample">
+    delete from company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.ea_system.bean.Company">
+    insert into company_info (companyId, userId, name, 
+      address, phoneNumber, linkMan, 
+      email, website)
+    values (#{companyid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{phonenumber,jdbcType=INTEGER}, #{linkman,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.ea_system.bean.Company">
+    insert into company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyid != null">
+        companyId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="linkman != null">
+        linkMan,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyid != null">
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=INTEGER},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.ea_system.bean.CompanyExample" resultType="java.lang.Long">
+    select count(*) from company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update company_info
+    <set>
+      <if test="record.companyid != null">
+        companyId = #{record.companyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonenumber != null">
+        phoneNumber = #{record.phonenumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.linkman != null">
+        linkMan = #{record.linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.website != null">
+        website = #{record.website,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update company_info
+    set companyId = #{record.companyid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      phoneNumber = #{record.phonenumber,jdbcType=INTEGER},
+      linkMan = #{record.linkman,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      website = #{record.website,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.ea_system.bean.Company">
+    update company_info
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=INTEGER},
+      </if>
+      <if test="linkman != null">
+        linkMan = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where companyId = #{companyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.ea_system.bean.Company">
+    update company_info
+    set userId = #{userid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=INTEGER},
+      linkMan = #{linkman,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR}
+    where companyId = #{companyid,jdbcType=INTEGER}
+  </update>
+</mapper>

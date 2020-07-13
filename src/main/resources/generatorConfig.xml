@@ -52,8 +52,7 @@
 
         <!-- 映射配置 -->
 
-        <table tableName="work_experience_info" domainObjectName="Work_Experience" />
-        <table tableName="training_info" domainObjectName="Training" />
+        <table tableName="favourite_info" domainObjectName="Favourite" />
 
     </context>
 </generatorConfiguration>

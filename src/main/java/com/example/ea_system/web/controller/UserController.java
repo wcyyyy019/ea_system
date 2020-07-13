@@ -3,22 +3,23 @@ package com.example.ea_system.web.controller;
 import com.example.ea_system.bean.User;
 import com.example.ea_system.bean.ex.UserEx;
 import com.example.ea_system.service.ICheckService;
-import com.example.ea_system.service.ICompanyService;
-import com.example.ea_system.service.IGraduateService;
 import com.example.ea_system.service.IUserService;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/User")
+import java.util.Arrays;
+import java.util.Map;
+
+//@RestController
+@Controller
+//@RequestMapping("/User")
 @Api(description = "用户管理")
+@SessionAttributes("user")
 public class UserController {
 
     @Autowired
@@ -30,10 +31,31 @@ public class UserController {
 //    @Autowired
 //    private IGraduateService graduateService;
 
-    @GetMapping("/loginin")
+
+    @ModelAttribute
+    public void test1(String username,Map<String,Object> map){
+        if(username.equals("123456")){
+            map.put("test",Arrays.asList("Tom","Jerry","Mike"));
+        }else {
+            map.put("test",Arrays.asList(username));
+        }
+    }
+
+    @RequestMapping("/loginin")
     @ApiOperation("登录校验")
-    public Message login(String username,String password){
-        return MessageUtil.success(userService.hasExist(username,password));
+    public String login(String username, String password, Map<String,Object> map){
+        int id;
+        if((id=userService.hasExist(username,password))!=0){
+            UserEx userEx=userService.getUserEx(id);
+            map.put("user",userEx);
+//            map.put("name", Arrays.asList("Tom","Jerry","Mike"));
+            if(userEx.getUsertype()==2)
+            return "indexPerson";
+            else if(userEx.getUsertype()==1)
+                return "indexCompany";
+        }
+
+        return "register";
     }
 
     @PostMapping("/add")

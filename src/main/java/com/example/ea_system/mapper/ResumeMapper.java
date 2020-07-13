@@ -33,4 +33,6 @@ public interface ResumeMapper {
     List<Resume> selectAll();
 
     List<Resume> selectByID(int id);
+
+    List<Resume> selectName(String title);
 }

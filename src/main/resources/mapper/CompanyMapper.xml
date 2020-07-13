@@ -255,4 +255,7 @@
       website = #{website,jdbcType=VARCHAR}
     where companyId = #{companyid,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+        select name from ea_system.company_info
+    </select>
 </mapper>

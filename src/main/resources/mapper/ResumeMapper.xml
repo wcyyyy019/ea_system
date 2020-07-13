@@ -214,4 +214,7 @@
   <select id="selectByID" resultMap="BaseResultMap">
     select * from ea_system.resume_info where resumeid = #{resumeid}
   </select>
+  <select id="selectName" resultMap="BaseResultMap">
+    select * from ea_system.resume_info where title like #{title}
+  </select>
 </mapper>

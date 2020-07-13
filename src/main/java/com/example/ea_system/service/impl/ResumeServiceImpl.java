@@ -25,4 +25,19 @@ public class ResumeServiceImpl implements IResumeService {
     public List<Resume> selectByID(int id) throws RuntimeException {
      return resumeMapper.selectByID(id);
     }
+
+    @Override
+    public List<Resume> selectName(String title) throws RuntimeException {
+        if ((title==null||"".equals(title))) {
+            return selectAll();
+        }else if(!"".equals(title))
+        {
+            //前者为空 后者不为空
+            title="%"+title+"%";
+            return resumeMapper.selectName(title);
+        }
+        return null;
+    }
+
+
 }

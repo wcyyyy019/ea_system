@@ -36,4 +36,14 @@ public class ResumeController {
         List<Resume> l=resumeService.selectByID(id);
         return MessageUtil.success(l);
     }
+
+    @GetMapping("selectByTitle")
+    @ApiOperation("通过标题进行模糊查询")
+    public Message selectByTitle(String title)
+    {
+        List<Resume> l=resumeService.selectName(title);
+        return MessageUtil.success(l);
+    }
+
+
 }
