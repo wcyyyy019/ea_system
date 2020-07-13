@@ -7,8 +7,10 @@ import com.example.ea_system.service.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class CompanyServiceImpl implements ICompanyService {
+public  class CompanyServiceImpl implements ICompanyService {
 
     @Autowired
     private CompanyMapper companyMapper;
@@ -40,5 +42,13 @@ public class CompanyServiceImpl implements ICompanyService {
             companyExMapper.init(userid);
 
         }
+
+    @Override
+    public List<Company> selectAll() throws RuntimeException {
+        List<Company> list=companyMapper.selectAll();
+        return list;
     }
+
+
+}
 

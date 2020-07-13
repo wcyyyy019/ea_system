@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.text.SimpleDateFormat;
 
-import java.util.Date;
-
 @RestController
 @RequestMapping("/Graduate")
 @Api(description = "毕业生信息管理")
