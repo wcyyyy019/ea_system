@@ -9,7 +9,7 @@ public class UserEx {
 
     private String password;
 
-    private String usertype;
+    private int usertype;
 
     private Check check;
 
@@ -47,12 +47,12 @@ public class UserEx {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getUsertype() {
+    public int getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(String usertype) {
-        this.usertype = usertype == null ? null : usertype.trim();
+    public void setUsertype(int usertype) {
+        this.usertype = usertype;
     }
 
     @Override

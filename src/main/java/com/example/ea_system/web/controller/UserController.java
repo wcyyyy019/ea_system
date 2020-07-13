@@ -49,7 +49,10 @@ public class UserController {
             UserEx userEx=userService.getUserEx(id);
             map.put("user",userEx);
 //            map.put("name", Arrays.asList("Tom","Jerry","Mike"));
+            if(userEx.getUsertype()==2)
             return "indexPerson";
+            else if(userEx.getUsertype()==1)
+                return "indexCompany";
         }
 
         return "register";
