@@ -1,4 +1,4 @@
-layui.use(['form','layer','laydate','table','laytpl'],function(){
+    layui.use(['form','layer','laydate','table','laytpl'],function(){
     var form = layui.form,
         $ = layui.jquery,
         laydate = layui.laydate,

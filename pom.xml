@@ -115,8 +115,10 @@
                     <include>**/*.js</include>
                     <include>**/*.jpg</include>
                     <include>**/*.json</include>
+                    <include>**/*.jsp</include>
                     <include>**/**</include>
                     <include>**/**/*.html</include>
+                    <include>**/**/*.jsp</include>
                     <include>**/**/*.js</include>
                     <include>**/**/*.css</include>
                     <include>**/**/*.jpg</include>

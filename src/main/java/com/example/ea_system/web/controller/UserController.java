@@ -19,7 +19,7 @@ import java.util.Map;
 @Controller
 //@RequestMapping("/User")
 @Api(description = "用户管理")
-@SessionAttributes("user")
+//@SessionAttributes("user")
 public class UserController {
 
     @Autowired
@@ -32,14 +32,14 @@ public class UserController {
 //    private IGraduateService graduateService;
 
 
-    @ModelAttribute
-    public void test1(String username,Map<String,Object> map){
-        if(username.equals("123456")){
-            map.put("test",Arrays.asList("Tom","Jerry","Mike"));
-        }else {
-            map.put("test",Arrays.asList(username));
-        }
-    }
+//    @ModelAttribute
+//    public void test1(String username,Map<String,Object> map){
+//        if(username.equals("123456")){
+//            map.put("test",Arrays.asList("Tom","Jerry","Mike"));
+//        }else {
+//            map.put("test",Arrays.asList(username));
+//        }
+//    }
 
     @RequestMapping("/loginin")
     @ApiOperation("登录校验")
@@ -48,14 +48,13 @@ public class UserController {
         if((id=userService.hasExist(username,password))!=0){
             UserEx userEx=userService.getUserEx(id);
             map.put("user",userEx);
-//            map.put("name", Arrays.asList("Tom","Jerry","Mike"));
             if(userEx.getUsertype()==2)
             return "indexPerson";
             else if(userEx.getUsertype()==1)
                 return "indexCompany";
         }
 
-        return "register";
+        return "Login";
     }
 
     @PostMapping("/add")
@@ -65,10 +64,6 @@ public class UserController {
         if (hasExieted){
             int id = user.getUserid();
             checkService.init(id);
-//            if(user.getUsertype()==1)
-//                companyService.init(id);
-//            else if(user.getUsertype()==2)
-//                graduateService.init(id);
             return MessageUtil.success(user.getUserid());
         }
         else{
@@ -84,7 +79,7 @@ public class UserController {
         return MessageUtil.success(user.getUserid());
     }
 
-    @GetMapping("/checkStatus")
+    @RequestMapping("/checkStatus")
     @ApiOperation("判断用户状态")
     public  Message checkStatus(int userid){
 

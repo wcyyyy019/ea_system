@@ -29,7 +29,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean addAndUpdate(User user) throws RuntimeException {
         if (user == null) return false;
-
         if (user.getUserid() == null) {
             if(!checkRepeatUsername(user.getUsername())){
                 userMapper.insert(user);

@@ -11,7 +11,6 @@ layui.use(['form', 'layer', 'upload', 'laydate', "address"], function() {
 		upload = layui.upload,
 		laydate = layui.laydate,
 		address = layui.address;
-
 	//上传头像
 	upload.render({
 		elem: '#userFace',

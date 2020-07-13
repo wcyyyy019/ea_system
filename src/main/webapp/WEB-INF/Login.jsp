@@ -35,6 +35,8 @@
         </div>
         <div><h1>                          </h1> </div>
         <input type="submit" name="" value="登录">
+        <div><h1>                          </h1> </div>
+        <input type="button" value="注册" size="15">
     </form>
 </div>
 </body>
