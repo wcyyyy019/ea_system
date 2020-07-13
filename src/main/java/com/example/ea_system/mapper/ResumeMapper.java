@@ -29,4 +29,8 @@ public interface ResumeMapper {
     int updateByPrimaryKeySelective(Resume record);
 
     int updateByPrimaryKey(Resume record);
+
+    List<Resume> selectAll();
+
+    List<Resume> selectByID(int id);
 }

@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FavouriteMapper {
+public interface FAvouriteMapper {
     long countByExample(FavouriteExample example);
 
     int deleteByExample(FavouriteExample example);

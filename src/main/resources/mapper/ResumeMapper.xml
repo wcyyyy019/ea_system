@@ -208,4 +208,10 @@
       adjunct = #{adjunct,jdbcType=VARCHAR}
     where resumeId = #{resumeid,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+        select * from ea_system.resume_info
+    </select>
+  <select id="selectByID" resultMap="BaseResultMap">
+    select * from ea_system.resume_info where resumeid = #{resumeid}
+  </select>
 </mapper>

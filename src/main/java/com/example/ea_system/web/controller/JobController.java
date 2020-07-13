@@ -25,4 +25,12 @@ public class JobController {
         jobService.addAndUpdate(job);
         return MessageUtil.success(job.getJobid());
     }
+
+    @PostMapping("/delete")
+    @ApiOperation("删除职位信息")
+    public Message delete(int id)
+    {
+        jobService.deleteByID(id);
+        return MessageUtil.success();
+    }
 }
