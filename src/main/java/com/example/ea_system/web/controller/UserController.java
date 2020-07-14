@@ -54,7 +54,6 @@ public class UserController {
         int id;
         if((id=userService.hasExist(username,password))!=0){
             UserEx userEx=userService.getUserEx(id);
-
             Loginer loginer = new Loginer();
             loginer.setUserid(userEx.getUserid());
             loginer.setPassword(userEx.getPassword());
@@ -64,9 +63,7 @@ public class UserController {
             if(userEx.getUsertype()==2){
                 return "indexPerson";
             }
-
             else if(userEx.getUsertype()==1){
-
                 return "indexCompany";
             }
 
@@ -84,21 +81,23 @@ public class UserController {
 
 
     @RequestMapping("/changePassword")
-    public void changePassword(String oldPwd,String NewPwd) throws Exception {
+    public UIMessage changePassword(String oldPwd,String NewPwd) throws Exception {
+        UIMessage uiMessage = new UIMessage();
         List<Loginer> loginers = loginerService.getLoginer();
         Loginer loginer = loginers.get(0);
         if(oldPwd==loginer.getPassword()){
             int id = loginer.getUserid();
-
             User user = userService.getUser(id);
             user.setPassword(NewPwd);
             userService.addAndUpdate(user);
+            uiMessage.setMsg("success");
         }
+            return uiMessage;
 
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/addUser")
     @ApiOperation("增加用户")
     public Message add(User user) {
         boolean hasExieted=userService.addAndUpdate(user);
@@ -132,7 +131,7 @@ public class UserController {
         return MessageUtil.success(userEx);
     }
 
-    @GetMapping("/getAll")
+    @RequestMapping("/getAll")
     @ApiOperation("查询所有用户")
     public Message listAllUser(){
        return MessageUtil.success(userService.listAllUser());

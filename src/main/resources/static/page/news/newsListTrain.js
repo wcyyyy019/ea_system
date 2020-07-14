@@ -20,10 +20,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             {type: "checkbox", fixed:"left", width:50},
             {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
             {field: 'newsName', title: '标题', width:350},
-
-            {field: 'newsTime', title: '发布时间', align:'center', minWidth:110, templet:function(d){
-                return d.newsTime.substring(0,10);
-            }},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
 		done: function(res, curr, count) {

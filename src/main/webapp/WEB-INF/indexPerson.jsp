@@ -37,7 +37,7 @@
     <!-- 顶部 -->
     <div class="layui-header header lt">
         <div class="layui-main mag0">
-            <a href="#" class="logo" alt="文字标题">大学生就业咨询系统</a>
+            <a href="#" class="logo" alt="文字标题">大学生就业咨询系统(学生)</a>
             <a href="#" class="logo" alt="图片" style="display: none;">
                 <img src="" class="jzy_mg_top_20">
             </a>
@@ -55,7 +55,7 @@
                         <img src="/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
                         <cite class="adminName">BY</cite>&nbsp;</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="page/user/userInfoPersonage.html"><i class="layui-icon">&#xe66f;</i><cite>个人资料</cite></a></dd>
+                        <dd><a href="page/user/userInfoPersonage.html"<i class="layui-icon">&#xe66f;</i><cite>个人资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="layui-icon ">&#xe770;</i><cite>修改密码</cite></a></dd>
 
                         <dd><a href="/loginout" class="signOut"><i class="layui-icon">&#xe682;</i><cite>退出</cite></a></dd>

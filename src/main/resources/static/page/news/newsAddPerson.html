@@ -24,16 +24,21 @@
 						<input type="text" class="layui-input newsName" lay-verify="newsName" placeholder="请输入标题"disabled>
 					</div>
 				</div>
-
 			</div>
-
+				<div class="layui-form-item">
+					<label class="layui-form-label">内容摘要</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容摘要" class="layui-textarea abstract" disabled></textarea>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="layui-form-item magb0">
 
-			<div class="layui-form-item">
-				<label class="layui-form-label">内容</label>
+			<div class="layui-form-item magb0">
+				<label class="layui-form-label">企业介绍</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" class="layui-textarea abstract" disabled></textarea>
+					<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="news_content"></textarea>
 				</div>
 			</div>
 		</div>
