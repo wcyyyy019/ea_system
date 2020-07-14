@@ -55,13 +55,12 @@
                         <img src="images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
                         <cite class="adminName">BY</cite>&nbsp;</a>
 
-                    <img src="/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
-                    <cite class="adminName">哥哥</cite>&nbsp;</a>
+
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="page/user/userInfoCompany.html"><i class="layui-icon">&#xe66f;</i><cite>企业资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="layui-icon ">&#xe770;</i><cite>修改密码</cite></a></dd>
 
-                        <dd><a href="page/login2/login.html" class="signOut"><i class="layui-icon">&#xe682;</i><cite>退出</cite></a></dd>
+                        <dd><a href="/loginout" class="signOut"><i class="layui-icon">&#xe682;</i><cite>退出</cite></a></dd>
                     </dl>
                 </li>
             </ul>
@@ -118,4 +117,3 @@
 
 </body>
 </html>
->>>>>>> abf83fb453cdabec2e8de7f19a0f39ebdc4311f4

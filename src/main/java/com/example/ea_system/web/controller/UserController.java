@@ -93,6 +93,12 @@ public class UserController {
          return "Login";
     }
 
+    @RequestMapping("ToRegister")
+    @ApiOperation("注册跳转")
+    public String register() throws RuntimeException{
+        return "register";
+    }
+
 
     @RequestMapping("/changePassword")
     @ApiOperation("修改密码")
@@ -115,17 +121,27 @@ public class UserController {
     }
 
 
-    @PostMapping("/addUser")
+    @RequestMapping("/addUser")
     @ApiOperation("增加用户")
-    public Message add(User user) {
+    public String add(String username,String password,String userType) {
+//        System.out.println(username+password+"     "+userType);
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUsertype(Integer.parseInt(userType));
+        System.out.println(user);
         boolean hasExieted=userService.addAndUpdate(user);
         if (hasExieted){
             int id = user.getUserid();
             checkService.init(id);
-            return MessageUtil.success(user.getUserid());
+            if(user.getUsertype()==1)
+                companyService.init(id);
+            else if(user.getUsertype()==2)
+                graduateService.init(id);
+            return "Login";
         }
         else{
-            return MessageUtil.success("hasExist");
+            return "register";
         }
 
     }
