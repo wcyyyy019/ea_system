@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/7/13
-  Time: 15:03
+  Time: 11:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,7 +18,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="icon" href="favicon.ico">     <!-- 网页顶部头图标 -->
-    <link rel="stylesheet" href="layui/css/layui.css" />   <!-- layui   css样式表 -->
+    <link rel="stylesheet" href="/layui/css/layui.css" />   <!-- layui   css样式表 -->
     <link rel="stylesheet" type="text/css" href="/css/public.css" />  <!-- 公用的css样式表 -->
     <link rel="stylesheet" href="/css/index.css" />     <!-- 后台首页样式表 -->
 </head>
@@ -37,7 +37,7 @@
     <!-- 顶部 -->
     <div class="layui-header header lt">
         <div class="layui-main mag0">
-            <a href="#" class="logo" alt="文字标题">大学生就业咨询系统</a>
+            <a href="#" class="logo" alt="文字标题">大学生就业咨询系统(企业)</a>
             <a href="#" class="logo" alt="图片" style="display: none;">
                 <img src="" class="jzy_mg_top_20">
             </a>
@@ -52,11 +52,8 @@
                 </li>
                 <li class="layui-nav-item" id="userInfo">
                     <a href="javascript:;">
-                        <img src="images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
+                        <img src="/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
                         <cite class="adminName">BY</cite>&nbsp;</a>
-
-                    <img src="/images/face.jpg" class="layui-nav-img userAvatar" width="35" height="35">
-                    <cite class="adminName">哥哥</cite>&nbsp;</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="page/user/userInfoCompany.html"><i class="layui-icon">&#xe66f;</i><cite>企业资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="layui-icon ">&#xe770;</i><cite>修改密码</cite></a></dd>
@@ -74,7 +71,7 @@
             <div class="navBar layui-side-scroll" id="navBar">
                 <ul class="layui-nav layui-nav-tree">
                     <li class="layui-nav-item layui-this">
-                        <a href="javascript:;" data-url="page/main.html">
+                        <a href="javascript:;" data-url="../page/main.html">
                             <i class="layui-icon" data-icon=""></i>
                             <cite>首页</cite>
                         </a>
@@ -88,7 +85,7 @@
                 <div class="main_hd with_extra">
                     <h2>首页</h2>
                 </div>
-                <iframe src="page/main.html" frameborder="0" scrolling="no" id="iframe"></iframe>
+                <iframe src="../page/main.html" frameborder="0" scrolling="no" id="iframe"></iframe>
             </div>
         </div>
     </div>
@@ -113,7 +110,7 @@
 
 
 
-<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/js/indexCompany.js"></script>
 
 </body>

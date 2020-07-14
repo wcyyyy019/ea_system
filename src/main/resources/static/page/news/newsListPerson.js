@@ -4,7 +4,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         laydate = layui.laydate,
         laytpl = layui.laytpl,
         table = layui.table;
-
     //新闻列表
     var tableIns = table.render({
 		  elem: '#newsList',
@@ -23,9 +22,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             {field: 'newsTop', title: '喜爱', align:'center', templet:function(d){
                 return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
             }},
-            {field: 'newsTime', title: '发布时间', align:'center', minWidth:110, templet:function(d){
-                return d.newsTime.substring(0,10);
-            }},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
 		done: function(res, curr, count) {
@@ -40,7 +36,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 			
 		}
     });
-
     //是否置顶
     form.on('switch(newsTop)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
@@ -69,7 +64,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             layer.msg("请输入搜索的内容");
         }
     });
-
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
@@ -98,7 +92,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 },500)
             }
         })
-       
     }
     $(".addNews_btn").click(function(){
         addNews();

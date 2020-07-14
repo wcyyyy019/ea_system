@@ -1,0 +1,53 @@
+{
+	"contentManagement": [ {
+		"title": "用户中心",
+		"icon": "&#xe770;",
+		"href": "",
+		"spread": true,
+		"children": [
+			{
+				"title": "工作经历",
+				"icon": "",
+				"href": "page/news/newsListJob.html",
+				"spread": false
+			},
+			{
+				"title": "培训记录",
+				"icon": "",
+				"href": "page/news/newsListTrain.html",
+				"spread": false
+			}
+		]
+	}, {
+		"title": "其他页面",
+		"icon": "&#xe653;",
+		"href": "",
+		"spread": true,
+		"children": [{
+			"title": "企业列表",
+			"icon": "",
+			"href": "page/news/newsListCompany.html",
+			"spread": false
+		},
+			{
+				"title": "喜爱企业列表",
+				"icon": "",
+				"href": "page/news/newsListCompany.html",
+				"spread": false
+			},
+			{
+				"title": "简历列表",
+				"icon": "",
+				"href": "page/news/newsList.html",
+				"spread": false
+			}
+
+
+
+		]
+	}
+
+
+	]
+
+}

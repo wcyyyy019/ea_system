@@ -37,7 +37,7 @@
     <!-- 顶部 -->
     <div class="layui-header header lt">
         <div class="layui-main mag0">
-            <a href="#" class="logo" alt="文字标题">大学生就业咨询系统</a>
+            <a href="#" class="logo" alt="文字标题">大学生就业咨询系统(学生)</a>
             <a href="#" class="logo" alt="图片" style="display: none;">
                 <img src="" class="jzy_mg_top_20">
             </a>
