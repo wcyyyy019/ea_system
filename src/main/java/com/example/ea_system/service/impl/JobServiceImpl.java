@@ -44,9 +44,14 @@ public class JobServiceImpl implements IJobService {
 
     @Override
     public List<Job> getJobByCompanyId(int companyId) throws RuntimeException {
-        JobExample jobExample =new JobExample();
+        JobExample jobExample = new JobExample();
         jobExample.createCriteria().andCompanyidEqualTo(companyId);
-        return  jobMapper.selectByExample(jobExample);
+        return jobMapper.selectByExample(jobExample);
+    }
+    @Override
+    public List<Job> selectAll() throws RuntimeException {
+       List<Job> list=jobMapper.selectAll();
+       return list;
     }
 
 

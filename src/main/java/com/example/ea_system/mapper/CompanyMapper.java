@@ -3,6 +3,8 @@ package com.example.ea_system.mapper;
 import com.example.ea_system.bean.Company;
 import com.example.ea_system.bean.CompanyExample;
 import java.util.List;
+
+import com.example.ea_system.bean.Job;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +33,5 @@ public interface CompanyMapper {
     int updateByPrimaryKey(Company record);
 
     List<Company> selectAll();
+
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface FAvouriteMapper {
+
     long countByExample(FavouriteExample example);
 
     int deleteByExample(FavouriteExample example);

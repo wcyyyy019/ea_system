@@ -9,5 +9,5 @@ public interface IJobService {
     void deleteByID(int id) throws RuntimeException;
     List<Job> getAllJob() throws RuntimeException;
     List<Job> getJobByCompanyId(int companyId) throws RuntimeException;
-
+    List<Job> selectAll() throws RuntimeException;
 }
