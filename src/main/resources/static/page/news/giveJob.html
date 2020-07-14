@@ -24,78 +24,70 @@
 			<div class="layui-col-md8 layui-col-xs12" >
 				<div class="layui-form-item">
 
-				<div class="layui-form-item">
-					<label class="layui-form-label">ID</label>
-					<div class="layui-input-block">
-						<input type="int" id="jobId" value=""class="layui-input userPhone">
-					</div>
-				</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">企业ID</label>
-						<div class="layui-input-block">
-							<input type="int" id="companyId" value="" placeholder="请输入企业用户ID"  class="layui-input userPhone">
-						</div>
-					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">职位名称</label>
 						<div class="layui-input-block">
-							<input type="varchar" id="jobName" value="" placeholder="请输入职位" lay-verify="required" class="layui-input realName">
+							<input type="varchar" id="jobName" value="" placeholder="请输入职位" lay-verify="required|jobName1" class="layui-input jobName" name="jobName">
 						</div>
 					</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">需求</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="varchar" value="" placeholder="请输入需求" lay-verify="required" class="layui-input realName">
+						<input type="varchar" id="varchar" value="" placeholder="请输入需求" lay-verify="required" class="layui-input requirement" name="requirement">
 					</div>
 				</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">企业地址</label>
 						<div class="layui-input-block">
-							<input type="varchar" id="address" value="" placeholder="请输入企业地址" lay-verify="required" class="layui-input realName">
+							<input type="varchar" id="address" value="" placeholder="请输入企业地址" lay-verify="required" class="layui-input address" name="address">
 						</div>
 					</div>
 					<div class="layui-form-item">
 					<label class="layui-form-label">薪资</label>
 					<div class="layui-input-block">
-						<input type="double" id="salary" value="" placeholder="请输入企业用户ID" class="layui-input userPhone">
+						<input type="double" id="salary" value="" placeholder="请输入薪资" class="layui-input salary" name="salary">
 					</div>
 				</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">招收人数</label>
 						<div class="layui-input-block">
-							<input type="int" id="number" value="" placeholder="请输入招收人数" class="layui-input userPhone">
+							<input type="int" id="number" value="" placeholder="请输入招收人数" class="layui-input number" name="number">
 						</div>
 					</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">其他待遇</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="otherPay" value="" placeholder="请输入其它待遇" lay-verify="required" class="layui-input realName">
+						<input type="varchar" id="otherPay" value="" placeholder="请输入其它待遇" lay-verify="required" class="layui-input otherpay" name="otherpay">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">截止日期</label>
 					<div class="layui-input-block">
-						<input type="datetime" id="closeDate" value="" placeholder="请输入截止日期" class="layui-input userPhone">
+						<input type="datetime" id="closeDate" value="" placeholder="请输入截止日期" class="layui-input closedate" name="closedate">
 					</div>
 				</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">职位描述与备注</label>
 						<div class="layui-input-block">
-							<input type="varchar" id="describe" value="" placeholder="请输入其它待遇" lay-verify="required" class="layui-input realName">
+							<input type="varchar" id="describe" value="" placeholder="请输入职位描述" lay-verify="required" class="layui-input described" name="described">
 						</div>
 					</div>
-				<div class="layui-form-item">
-					<div class="layui-input-block">
-						<button class="layui-btn" onclick="window.close()" lay-submit="" lay-filter="changeUser">立即提交</button>
-						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					<div class="layui-col-md3 layui-col-xs12">
+<!--						<blockquote class="layui-elem-quote title magt10"><i class="layui-icon">&#xe609;</i> 发布</blockquote>-->
+						<div class="border">
+							<hr class="layui-bg-gray" />
+							<div class="layui-right">
+								<a class="layui-btn layui-btn-sm" lay-filter="addJob" lay-submit><i class="layui-icon">&#xe609;</i>立即发布</a>
+<!--								<a class="layui-btn layui-btn-primary layui-btn-sm" lay-filter="look" lay-submit>预览</a>-->
+							</div>
+						</div>
 					</div>
-				</div>
 
 			</div>
 			</div>
 		</form>
-		<script type="text/javascript" src="../../layui/layui.js"></script>
-		<script type="text/javascript" src="SeegiveJob.js"></script>
+		<script type="text/javascript" src="/layui/layui.js"></script>
+		<script type="text/javascript" src="giveJob.js"></script>
 		
 	</body>
 </html>

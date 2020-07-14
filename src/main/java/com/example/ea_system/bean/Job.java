@@ -1,5 +1,7 @@
 package com.example.ea_system.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +22,7 @@ public class Job implements Serializable {
 
     private String otherpay;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date closedate;
 
     private String described;

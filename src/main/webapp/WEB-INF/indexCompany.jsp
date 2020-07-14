@@ -71,7 +71,7 @@
             <div class="navBar layui-side-scroll" id="navBar">
                 <ul class="layui-nav layui-nav-tree">
                     <li class="layui-nav-item layui-this">
-                        <a href="javascript:;" data-url="../page/main.html">
+                        <a href="javascript:;" data-url="/page/main.html">
                             <i class="layui-icon" data-icon=""></i>
                             <cite>首页</cite>
                         </a>
@@ -114,8 +114,5 @@
 <script type="text/javascript" src="/js/indexCompany.js"></script>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 307d215534b48da3d84e15f7a11c1097ed049f0e
+
