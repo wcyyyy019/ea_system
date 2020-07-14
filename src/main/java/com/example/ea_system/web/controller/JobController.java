@@ -7,9 +7,12 @@ import com.example.ea_system.util.MessageUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/Job")
@@ -32,5 +35,13 @@ public class JobController {
     {
         jobService.deleteByID(id);
         return MessageUtil.success();
+    }
+
+    @GetMapping("select")
+    @ApiOperation("查看所有职位")
+    public Message selectAll()
+    {
+       List<Job> l=jobService.selectAll();
+        return MessageUtil.success(l);
     }
 }

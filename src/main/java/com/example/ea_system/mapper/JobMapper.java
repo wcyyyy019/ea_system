@@ -27,4 +27,8 @@ public interface JobMapper {
     int updateByPrimaryKeySelective(Job record);
 
     int updateByPrimaryKey(Job record);
+
+    List<Job> selectAll();
+
+    List<Job> selectBycompany(int id);
 }

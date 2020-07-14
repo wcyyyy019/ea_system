@@ -2,6 +2,7 @@ package com.example.ea_system.web.controller;
 
 
 import com.example.ea_system.bean.Company;
+import com.example.ea_system.bean.Job;
 import com.example.ea_system.service.ICompanyService;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
@@ -46,4 +47,14 @@ public class CompanyController {
        List<Company> c= companyService.selectAll();
         return MessageUtil.success(c);
     }
+
+    @GetMapping("/selectjob")
+    @ApiOperation("根据企业id查找职位")
+    public Message selectJob(int id)
+    {
+        List<Job> list=companyService.selectBycompany(id);
+        return MessageUtil.success(list);
+    }
+
+
 }
