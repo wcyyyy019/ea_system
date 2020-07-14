@@ -4,7 +4,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         laydate = layui.laydate,
         laytpl = layui.laytpl,
         table = layui.table;
-
     //新闻列表
     var tableIns = table.render({
 		  elem: '#newsList',
@@ -34,7 +33,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 			
 		}
     });
-
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
     $(".search_btn").on("click",function(){
         if($(".searchVal").val() != ''){
@@ -50,16 +48,15 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             layer.msg("请输入搜索的内容");
         }
     });
-
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
-            title : "添加工作经历",
+            title : "添加职位信息",
             type : 2,
 			area: ['90%', '90%'],
 			fixed: false, //不固定
 			maxmin: true,
-            content : "newsAddJob.html",
+            content : "giveJob.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
@@ -79,12 +76,10 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 },500)
             }
         })
-       
     }
     $(".addNews_btn").click(function(){
         addNews();
     })
-
     //批量删除
     $(".delAll_btn").click(function(){
         var checkStatus = table.checkStatus('newsListTable'),
@@ -106,7 +101,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             layer.msg("请选择需要删除的工作经历");
         }
     })
-
     //列表操作
     table.on('tool(newsList)', function(obj){
         var layEvent = obj.event,
@@ -125,5 +119,4 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             });
         } 
     });
-
 })
