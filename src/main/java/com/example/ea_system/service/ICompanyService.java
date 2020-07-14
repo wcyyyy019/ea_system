@@ -10,4 +10,5 @@ public interface ICompanyService {
     void deleteByID(int id) throws RuntimeException;
     void init(int userid) throws RuntimeException;
     List<Company> selectAll() throws RuntimeException;
+    Company getCompanyByUserid(int id) throws RuntimeException;
 }

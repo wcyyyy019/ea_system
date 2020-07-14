@@ -303,6 +303,126 @@ public class LoginerExample {
             addCriterion("password not between", value1, value2, "password");
             return (Criteria) this;
         }
+
+        public Criteria andGraduateridIsNull() {
+            addCriterion("graduaterId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridIsNotNull() {
+            addCriterion("graduaterId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridEqualTo(Integer value) {
+            addCriterion("graduaterId =", value, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridNotEqualTo(Integer value) {
+            addCriterion("graduaterId <>", value, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridGreaterThan(Integer value) {
+            addCriterion("graduaterId >", value, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridGreaterThanOrEqualTo(Integer value) {
+            addCriterion("graduaterId >=", value, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridLessThan(Integer value) {
+            addCriterion("graduaterId <", value, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridLessThanOrEqualTo(Integer value) {
+            addCriterion("graduaterId <=", value, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridIn(List<Integer> values) {
+            addCriterion("graduaterId in", values, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridNotIn(List<Integer> values) {
+            addCriterion("graduaterId not in", values, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridBetween(Integer value1, Integer value2) {
+            addCriterion("graduaterId between", value1, value2, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andGraduateridNotBetween(Integer value1, Integer value2) {
+            addCriterion("graduaterId not between", value1, value2, "graduaterid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidIsNull() {
+            addCriterion("companyId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidIsNotNull() {
+            addCriterion("companyId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidEqualTo(Integer value) {
+            addCriterion("companyId =", value, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidNotEqualTo(Integer value) {
+            addCriterion("companyId <>", value, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidGreaterThan(Integer value) {
+            addCriterion("companyId >", value, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("companyId >=", value, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidLessThan(Integer value) {
+            addCriterion("companyId <", value, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidLessThanOrEqualTo(Integer value) {
+            addCriterion("companyId <=", value, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidIn(List<Integer> values) {
+            addCriterion("companyId in", values, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidNotIn(List<Integer> values) {
+            addCriterion("companyId not in", values, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidBetween(Integer value1, Integer value2) {
+            addCriterion("companyId between", value1, value2, "companyid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyidNotBetween(Integer value1, Integer value2) {
+            addCriterion("companyId not between", value1, value2, "companyid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

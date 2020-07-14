@@ -9,6 +9,10 @@ public class Loginer implements Serializable {
 
     private String password;
 
+    private Integer graduaterid;
+
+    private Integer companyid;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getUserid() {
@@ -35,6 +39,22 @@ public class Loginer implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
+    public Integer getGraduaterid() {
+        return graduaterid;
+    }
+
+    public void setGraduaterid(Integer graduaterid) {
+        this.graduaterid = graduaterid;
+    }
+
+    public Integer getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(Integer companyid) {
+        this.companyid = companyid;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -44,6 +64,8 @@ public class Loginer implements Serializable {
         sb.append(", userid=").append(userid);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
+        sb.append(", graduaterid=").append(graduaterid);
+        sb.append(", companyid=").append(companyid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

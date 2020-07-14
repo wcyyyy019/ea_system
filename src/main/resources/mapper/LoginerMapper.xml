@@ -5,6 +5,8 @@
     <id column="userId" jdbcType="INTEGER" property="userid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="graduaterId" jdbcType="INTEGER" property="graduaterid" />
+    <result column="companyId" jdbcType="INTEGER" property="companyid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    userId, username, password
+    userId, username, password, graduaterId, companyId
   </sql>
   <select id="selectByExample" parameterType="com.example.ea_system.bean.LoginerExample" resultMap="BaseResultMap">
     select
@@ -98,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.ea_system.bean.Loginer">
-    insert into loginer (userId, username, password
-      )
-    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+    insert into loginer (userId, username, password, 
+      graduaterId, companyId)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{graduaterid,jdbcType=INTEGER}, #{companyid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.example.ea_system.bean.Loginer">
     insert into loginer
@@ -115,6 +117,12 @@
       <if test="password != null">
         password,
       </if>
+      <if test="graduaterid != null">
+        graduaterId,
+      </if>
+      <if test="companyid != null">
+        companyId,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -125,6 +133,12 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="graduaterid != null">
+        #{graduaterid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null">
+        #{companyid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -146,6 +160,12 @@
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
+      <if test="record.graduaterid != null">
+        graduaterId = #{record.graduaterid,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyid != null">
+        companyId = #{record.companyid,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +175,9 @@
     update loginer
     set userId = #{record.userid,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR}
+      password = #{record.password,jdbcType=VARCHAR},
+      graduaterId = #{record.graduaterid,jdbcType=INTEGER},
+      companyId = #{record.companyid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +191,21 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="graduaterid != null">
+        graduaterId = #{graduaterid,jdbcType=INTEGER},
+      </if>
+      <if test="companyid != null">
+        companyId = #{companyid,jdbcType=INTEGER},
+      </if>
     </set>
     where userId = #{userid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.ea_system.bean.Loginer">
     update loginer
     set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
+      password = #{password,jdbcType=VARCHAR},
+      graduaterId = #{graduaterid,jdbcType=INTEGER},
+      companyId = #{companyid,jdbcType=INTEGER}
     where userId = #{userid,jdbcType=INTEGER}
   </update>
 </mapper>

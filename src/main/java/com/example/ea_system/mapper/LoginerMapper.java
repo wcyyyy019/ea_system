@@ -4,9 +4,6 @@ import com.example.ea_system.bean.Loginer;
 import com.example.ea_system.bean.LoginerExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
-
-@Repository
 
 public interface LoginerMapper {
     long countByExample(LoginerExample example);

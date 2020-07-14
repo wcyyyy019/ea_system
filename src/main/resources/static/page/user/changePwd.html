@@ -27,13 +27,13 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">新密码</label>
 			<div class="layui-input-block">
-				<input type="password" value="" placeholder="请输入新密码" lay-verify="required" id="NewPwd1" class="layui-input pwd">
+				<input type="password" value="" placeholder="请输入新密码" lay-verify="required|newPwd" id="NewPwd" class="layui-input pwd" name="NewPwd">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">确认密码</label>
 			<div class="layui-input-block">
-				<input type="password" value="" placeholder="请确认密码" lay-verify="required" id="NewPwd2" class="layui-input pwd">
+				<input type="password" value="" placeholder="请确认密码" lay-verify="required|confirmPwd" id="NewPwd2" class="layui-input pwd">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -45,7 +45,32 @@
 	</div>
 </form>
 <script type="text/javascript" src="../../layui/layui.js"></script>
-<script type="text/javascript" src="changePwd.js"></script>
-<!--<script type="text/javascript" src="user.js"></script>-->
+<!--<script type="text/javascript" src="changePwd.js"></script>-->
+<script>
+	layui.use(['form','layer'],function() {
+		var form = layui.form,
+				layer = parent.layer === undefined ? layui.layer : top.layer,
+				$ = layui.jquery;
+		form.on('submit(changePwd)',function (data) {
+			$.ajax({
+				url:'/changePassword',
+				type:'post',
+				data:data.field,
+				dataType:'JSON',
+				timeout:2000,
+				success:function(){
+						layer.msg("密码修改成功");
+				},
+				error:function () {
+					layer.msg("密码修改失败")
+				}
+			})
+		})
+
+	})
+
+
+</script>
+<script type="text/javascript" src="user.js"></script>
 </body>
 </html>

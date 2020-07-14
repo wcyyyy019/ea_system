@@ -8,7 +8,7 @@
     //新闻列表
     var tableIns = table.render({
 		  elem: '#newsList',
-		  url : '/Resume/selectAll',
+		  url : '/Resume/selectByID',
 		  cellMinWidth : 95,
 		  page : true,
 		  //toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
@@ -21,18 +21,7 @@
             {field: 'resumeid', title: 'ID', width:60, align:"center" ,fixed:"left"},
             {field: 'title', title: '简历标题', width:350},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
-        ]],
-		done: function(res, curr, count) {
-			//图片放大预览
-			var ids;
-			for (var j in res.data) {
-				ids = res.data[j].newsId;
-				layer.photos({
-					photos: '.thumbnailImages'+ids 
-				});
-			}
-			
-		}
+        ]]
     });
 
     //是否置顶
@@ -51,12 +40,21 @@
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
     $(".search_btn").on("click",function(){
         if($(".searchVal").val() != ''){
+
             table.reload("newsListTable",{
+                url:'/Resume/selectByTitle',
+                type:'get',
+                success:function(){
+                    layer.msg("查询成功");
+                },
+                error:function () {
+                    layer.msg("查询失败")
+                },
                 page: {
                     curr: 1 //重新从第 1 页开始
                 },
                 where: {
-                    key: $(".searchVal").val()  //搜索的关键字
+                    search: $(".searchVal").val()  //搜索的关键字
                 }
             })
         }else{
@@ -66,6 +64,7 @@
 
     //添加文章
     function addNews(edit){
+
         var index = layui.layer.open({
             title : "添加简历",
             type : 2,
@@ -76,13 +75,9 @@
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".newsName").val(edit.newsName);
-                    body.find(".abstract").val(edit.abstract);
-                    body.find(".thumbImg").attr("src",edit.newsImg);
-                    body.find("#news_content").val(edit.content);
-                    body.find(".newsStatus select").val(edit.newsStatus);
-                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
-                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
+                    body.find(".title").val(edit.title);
+                    body.find(".adjunct").val(edit.adjunct);
+                    body.find(".content").val(edit.content);
                     form.render();
                 }
                 setTimeout(function(){
@@ -102,15 +97,33 @@
     $(".delAll_btn").click(function(){
         var checkStatus = table.checkStatus('newsListTable'),
             data = checkStatus.data,
-            newsId = [];
+            resumeid = [];
         if(data.length > 0) {
             for (var i in data) {
-                newsId.push(data[i].newsId);
+                resumeid.push(data[i].resumeid);
             }
+            // console.log(resumeid);
             layer.confirm('确定删除选中的简历？', {icon: 3, title: '提示信息'}, function (index) {
-                // $.get("删除简历接口",{
-                //     newsId : newsId  //将需要删除的newsId作为参数传入
+                // $.post("/Resume/deleteMany",{
+                //     traditional: true,
+                //     ids : resumeid  //将需要删除的newsId作为参数传入
                 // },function(data){
+                $.ajax({
+                    url:'/Resume/deleteMany',
+                    type:'post',
+                    data:{ids:resumeid},
+                    dataType:'JSON',
+                    traditional: true,
+                    success:function(){
+                        layer.msg("提交成功");
+                    },
+                    error:function () {
+                        layer.msg("提交失败")
+                    }
+                })
+                tableIns.reload();
+                tableIns.reload();
+                tableIns.reload();
                 tableIns.reload();
                 layer.close(index);
                 // })
@@ -124,17 +137,17 @@
     table.on('tool(newsList)', function(obj){
         var layEvent = obj.event,
             data = obj.data;
-			console.log(obj)
+			// console.log(obj)
         if(layEvent === 'edit'){ //编辑
             addNews(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此简历？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除简历接口",{
-                //     newsId : data.newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
+                $.get("/Resume/deleteOne",{
+                    id : data.resumeid  //将需要删除的newsId作为参数传入
+                },function(data){
                     tableIns.reload();
                     layer.close(index);
-                // })
+                })
             });
         } 
     });

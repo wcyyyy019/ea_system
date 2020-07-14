@@ -3,9 +3,7 @@ package com.example.ea_system.web.controller;
 import com.example.ea_system.bean.Loginer;
 import com.example.ea_system.bean.User;
 import com.example.ea_system.bean.ex.UserEx;
-import com.example.ea_system.service.ICheckService;
-import com.example.ea_system.service.ILoginerService;
-import com.example.ea_system.service.IUserService;
+import com.example.ea_system.service.*;
 import com.example.ea_system.util.Message;
 import com.example.ea_system.util.MessageUtil;
 import com.example.ea_system.util.UIMessage;
@@ -15,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,11 @@ public class UserController {
     private ICheckService checkService;
     @Autowired
     private ILoginerService loginerService;
+
+    @Autowired
+    private IGraduateService graduateService;
+    @Autowired
+    private ICompanyService companyService;
 //    @Autowired
 //    private ICompanyService companyService;
 //    @Autowired
@@ -58,12 +62,21 @@ public class UserController {
             loginer.setUserid(userEx.getUserid());
             loginer.setPassword(userEx.getPassword());
             loginer.setUsername(userEx.getUsername());
-            loginerService.NewLoginer(loginer);
-            map.put("loginer",loginer);
-            if(userEx.getUsertype()==2){
+
+
+            if(userEx.getUsertype()==2){//学生
+                loginer.setGraduaterid(graduateService.getGraduateByUserid(id).getGraduateid());
+                loginer.setCompanyid(0);
+                loginerService.NewLoginer(loginer);
+                map.put("loginer",loginer);
+//                System.out.println("登录成功"+loginer);
                 return "indexPerson";
             }
-            else if(userEx.getUsertype()==1){
+            else if(userEx.getUsertype()==1){//企业
+                loginer.setCompanyid(companyService.getCompanyByUserid(id).getCompanyid());
+                loginer.setGraduaterid(0);
+                loginerService.NewLoginer(loginer);
+                map.put("loginer",loginer);
                 return "indexCompany";
             }
 
@@ -74,6 +87,7 @@ public class UserController {
 
 
     @RequestMapping("/loginout")
+    @ApiOperation("登出")
     public String loginout(Loginer loginer) throws Exception {
          loginerService.DeleteLoginer();
          return "Login";
@@ -81,11 +95,15 @@ public class UserController {
 
 
     @RequestMapping("/changePassword")
-    public UIMessage changePassword(String oldPwd,String NewPwd) throws Exception {
+    @ApiOperation("修改密码")
+    public UIMessage changePassword(HttpServletRequest request) throws Exception {
+        String oldPwd = request.getParameter("oldPwd");
+        String NewPwd = request.getParameter("NewPwd");
+//        System.out.println(oldPwd+" "+NewPwd);
         UIMessage uiMessage = new UIMessage();
         List<Loginer> loginers = loginerService.getLoginer();
         Loginer loginer = loginers.get(0);
-        if(oldPwd==loginer.getPassword()){
+        if(oldPwd.equals(loginer.getPassword())){
             int id = loginer.getUserid();
             User user = userService.getUser(id);
             user.setPassword(NewPwd);

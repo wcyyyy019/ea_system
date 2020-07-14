@@ -1,6 +1,7 @@
 package com.example.ea_system.service.impl;
 
 import com.example.ea_system.bean.Company;
+import com.example.ea_system.bean.CompanyExample;
 import com.example.ea_system.mapper.CompanyMapper;
 import com.example.ea_system.mapper.ex.CompanyExMapper;
 import com.example.ea_system.service.ICompanyService;
@@ -47,6 +48,14 @@ public  class CompanyServiceImpl implements ICompanyService {
     public List<Company> selectAll() throws RuntimeException {
         List<Company> list=companyMapper.selectAll();
         return list;
+    }
+
+    @Override
+    public Company getCompanyByUserid(int id) throws RuntimeException {
+        CompanyExample companyExample =new CompanyExample();
+        companyExample.createCriteria().andUseridEqualTo(id);
+        List<Company> companys = companyMapper.selectByExample(companyExample);
+        return companys.get(0);
     }
 
 
