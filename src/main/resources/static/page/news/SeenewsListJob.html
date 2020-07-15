@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>简历列表</title>
+		<title>查看职位列表</title>
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -25,12 +25,6 @@
 						</div>
 						<a class="layui-btn search_btn" data-type="reload">搜索</a>
 					</div>
-					<div class="layui-inline">
-						<a class="layui-btn  addNews_btn">发布职位招聘信息</a>
-					</div>
-					<div class="layui-inline">
-						<a class="layui-btn  delAll_btn">批量删除</a>
-					</div>
 				</form>
 			</blockquote>
 
@@ -38,11 +32,10 @@
 			<!--操作-->
 			<script type="text/html" id="newsListBar">
 				<a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
-				<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
 			</script>
 			<script type="text/html" id="toolbarDemo"></script>
 		</form>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
-		<script type="text/javascript" src="seenewsListJob.js"></script>
+		<script type="text/javascript" src="SeenewsListJob.js"></script>
 	</body>
 </html>

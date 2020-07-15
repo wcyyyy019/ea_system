@@ -36,6 +36,12 @@
 					"spread": false
 				},
 				{
+					"title": "职位列表",
+					"icon": "",
+					"href": "page/news/seenewsListJob.html",
+					"spread": false
+				},
+				{
 					"title": "简历列表",
 					"icon": "",
 					"href": "page/news/newsList.html",

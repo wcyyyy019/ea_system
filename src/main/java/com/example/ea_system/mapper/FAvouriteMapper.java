@@ -9,11 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FAvouriteMapper {
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 307d215534b48da3d84e15f7a11c1097ed049f0e
     long countByExample(FavouriteExample example);
 
     int deleteByExample(FavouriteExample example);
