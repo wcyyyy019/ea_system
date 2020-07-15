@@ -23,7 +23,13 @@
 			"icon": "",
 			"href": "page/news/newsListgraduate.html",
 			"spread": false
-		}
+		},
+			{
+				"title": "就业指导",
+				"icon": "",
+				"href": "page/news/newsListEmployment.html",
+				"spread": false
+			}
 		]
 	}
 

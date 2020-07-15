@@ -67,12 +67,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
-            title : "添加培训记录",
+            title : "查看就业指导",
             type : 2,
 			area: ['90%', '90%'],
 			fixed: false, //不固定
 			maxmin: true,
-            content : "../user/Trainrecord.html",
+            content : "seeemployment.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
@@ -94,35 +94,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         })
        
     }
-    function addNews1(edit){
-        var index = layui.layer.open({
-            title : "查看培训记录",
-            type : 2,
-            area: ['90%', '90%'],
-            fixed: false, //不固定
-            maxmin: true,
-            content : "../user/seeTrainrecord.html",
-            success : function(layero, index){
-                var body = layui.layer.getChildFrame('body', index);
-                if(edit){
-                    body.find(".newsName").val(edit.newsName);
-                    body.find(".abstract").val(edit.abstract);
-                    body.find(".thumbImg").attr("src",edit.newsImg);
-                    body.find("#news_content").val(edit.content);
-                    body.find(".newsStatus select").val(edit.newsStatus);
-                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
-                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
-                    form.render();
-                }
-                setTimeout(function(){
-                    layui.layer.tips('点击此处返回培训记录列表', '.layui-layer-setwin .layui-layer-close', {
-                        tips: 3
-                    });
-                },500)
-            }
-        })
 
-    }
     $(".addNews_btn").click(function(){
         addNews();
     })
@@ -155,7 +127,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             data = obj.data;
 			console.log(obj)
         if(layEvent === 'edit'){ //编辑
-            addNews1(data);
+            addNews(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此培训记录？',{icon:3, title:'提示信息'},function(index){
                 // $.get("删除简历接口",{
