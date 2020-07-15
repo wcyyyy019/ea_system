@@ -1,7 +1,9 @@
 package com.example.ea_system.service.impl;
 
 import com.example.ea_system.bean.Company;
+import com.example.ea_system.bean.Job;
 import com.example.ea_system.mapper.CompanyMapper;
+import com.example.ea_system.mapper.JobMapper;
 import com.example.ea_system.mapper.ex.CompanyExMapper;
 import com.example.ea_system.service.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public  class CompanyServiceImpl implements ICompanyService {
 
     @Autowired
     private CompanyMapper companyMapper;
+    @Autowired
+    private JobMapper jobMapper;
 
     @Override
     public void addAndUpdate(Company company) throws RuntimeException {
@@ -47,6 +51,12 @@ public  class CompanyServiceImpl implements ICompanyService {
     public List<Company> selectAll() throws RuntimeException {
         List<Company> list=companyMapper.selectAll();
         return list;
+    }
+
+    @Override
+    public List<Job> selectBycompany(int id) throws RuntimeException {
+            List<Job> list=jobMapper.selectBycompany(id);
+             return list;
     }
 
 

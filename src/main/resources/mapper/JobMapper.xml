@@ -288,4 +288,10 @@
       described = #{described,jdbcType=VARCHAR}
     where jobId = #{jobid,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+         select * from ea_system.job_info
+  </select>
+  <select id="selectBycompany" resultMap="BaseResultMap">
+         select * from ea_system.job_info where companyid in (select companyid from ea_system.company_info where companyid = #{companyid})
+  </select>
 </mapper>
