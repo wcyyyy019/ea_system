@@ -79,6 +79,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             }
         })
     }
+
     $(".addNews_btn").click(function(){
         addNews();
     })

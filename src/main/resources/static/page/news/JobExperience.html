@@ -31,21 +31,21 @@
 					</div>
 				</div>
 					<div class="layui-form-item">
-						<label class="layui-form-label">企业ID</label>
+						<label class="layui-form-label">毕业生ID</label>
 						<div class="layui-input-block">
-							<input type="int" id="companyId" value="" placeholder="请输入企业用户ID"  class="layui-input userPhone">
+							<input type="int"  id="graduateId" value="" placeholder="请输入毕业生ID"  class="layui-input userPhone">
 						</div>
 					</div>
 					<div class="layui-form-item">
-						<label class="layui-form-label">职位名称</label>
+						<label class="layui-form-label">开始工作时间</label>
 						<div class="layui-input-block">
-							<input type="varchar" id="jobName" value="" placeholder="请输入职位" lay-verify="required" class="layui-input realName">
+							<input type="datetime" id="startTime" value="" placeholder="开始工作时间" lay-verify="required" class="layui-input realName">
 						</div>
 					</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">需求</label>
+					<label class="layui-form-label">工作结束时间</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="varchar" value="" placeholder="请输入需求" lay-verify="required" class="layui-input realName">
+						<input type="datetime" id="endTime" value="" placeholder="工作结束时间" lay-verify="required" class="layui-input realName">
 					</div>
 				</div>
 					<div class="layui-form-item">
@@ -55,35 +55,29 @@
 						</div>
 					</div>
 					<div class="layui-form-item">
-					<label class="layui-form-label">薪资</label>
+					<label class="layui-form-label">工作单位</label>
 					<div class="layui-input-block">
-						<input type="double" id="salary" value="" placeholder="请输入企业用户ID" class="layui-input userPhone">
+						<input type="varchar" id="workCompany" value="" placeholder="请输入工作单位" class="layui-input userPhone">
 					</div>
 				</div>
 					<div class="layui-form-item">
-						<label class="layui-form-label">招收人数</label>
+						<label class="layui-form-label">部门名称</label>
 						<div class="layui-input-block">
-							<input type="int" id="number" value="" placeholder="请输入招收人数" class="layui-input userPhone">
+							<input type="varchar" id="department" value="" placeholder="请输入部门名称" class="layui-input userPhone">
 						</div>
 					</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">其他待遇</label>
+					<label class="layui-form-label">职位</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="otherPay" value="" placeholder="请输入其它待遇" lay-verify="required" class="layui-input realName">
+						<input type="varchar" id="post" value="" placeholder="请输入职位" lay-verify="required" class="layui-input realName">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">截止日期</label>
+					<label class="layui-form-label">职位级别</label>
 					<div class="layui-input-block">
-						<input type="datetime" id="closeDate" value="" placeholder="请输入截止日期" class="layui-input userPhone">
+						<input type="grade" id="varchar" value="" placeholder="请输入截止日期" class="layui-input userPhone">
 					</div>
 				</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">职位描述与备注</label>
-						<div class="layui-input-block">
-							<input type="varchar" id="describe" value="" placeholder="请输入其它待遇" lay-verify="required" class="layui-input realName">
-						</div>
-					</div>
 				<div class="layui-form-item">
 					<div class="layui-input-block">
 						<button class="layui-btn" onclick="window.close()" lay-submit="" lay-filter="changeUser">立即提交</button>
@@ -95,7 +89,7 @@
 			</div>
 		</form>
 		<script type="text/javascript" src="../../layui/layui.js"></script>
-		<script type="text/javascript" src="giveJob.js"></script>
+		<script type="text/javascript" src="JobExperience.js"></script>
 		
 	</body>
 </html>

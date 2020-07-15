@@ -50,12 +50,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
-            title : "添加职位信息",
+            title : "添加工作经历",
             type : 2,
 			area: ['90%', '90%'],
 			fixed: false, //不固定
 			maxmin: true,
-            content : "giveJob.html",
+            content : "JobExperience.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
@@ -78,12 +78,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     }
     function addNews1(edit){
         var index = layui.layer.open({
-            title : "查看职位",
+            title : "查看工作经历",
             type : 2,
             area: ['90%', '90%'],
             fixed: false, //不固定
             maxmin: true,
-            content : "giveJob1.html",
+            content : "seeJobExperience.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
