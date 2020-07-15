@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>企业职位信息</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="use.css" media="all" />
+	</head>
+	<body class="childrenBody">
+		<form class="layui-form layui-row" style="padding: 20px;background-color: #fff;">
+			<div class="layui-col-md3 layui-col-xs12 user_right" style="margin-bottom: 20px;">
+				<div class="layui-upload-list" title="我要换一个头像">
+					<img class="layui-upload-img layui-circle userFaceBtn userAvatar" id="userFace">
+				</div>
+				
+			</div>
+			<div class="layui-col-md8 layui-col-xs12" >
+				<div class="layui-form-item">
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">ID</label>
+					<div class="layui-input-block">
+						<input type="int" disabled id="jobId" value=""class="layui-input userPhone">
+					</div>
+				</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">毕业生ID</label>
+						<div class="layui-input-block">
+							<input type="int" disabled  id="graduateId" value="" placeholder="请输入毕业生ID"  class="layui-input userPhone">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">开始工作时间</label>
+						<div class="layui-input-block">
+							<input type="datetime" disabled id="startTime" value="" placeholder="开始工作时间" lay-verify="required" class="layui-input realName">
+						</div>
+					</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">工作结束时间</label>
+					<div class="layui-input-block">
+						<input type="datetime" disabled id="endTime" value="" placeholder="工作结束时间" lay-verify="required" class="layui-input realName">
+					</div>
+				</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">企业地址</label>
+						<div class="layui-input-block">
+							<input type="varchar" disabled id="address" value="" placeholder="请输入企业地址" lay-verify="required" class="layui-input realName">
+						</div>
+					</div>
+					<div class="layui-form-item">
+					<label class="layui-form-label">工作单位</label>
+					<div class="layui-input-block">
+						<input type="varchar" disabled id="workCompany" value="" placeholder="请输入工作单位" class="layui-input userPhone">
+					</div>
+				</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">部门名称</label>
+						<div class="layui-input-block">
+							<input type="varchar" disabled id="department" value="" placeholder="请输入部门名称" class="layui-input userPhone">
+						</div>
+					</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">职位</label>
+					<div class="layui-input-block">
+						<input type="varchar" disabled id="post" value="" placeholder="请输入职位" lay-verify="required" class="layui-input realName">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">职位级别</label>
+					<div class="layui-input-block">
+						<input type="grade" disabled id="varchar" value="" placeholder="请输入截止日期" class="layui-input userPhone">
+					</div>
+				</div>
+			</div>
+			</div>
+		</form>
+		<script type="text/javascript" src="../../layui/layui.js"></script>
+		<script type="text/javascript" src="seeJobExperience.js"></script>
+		
+	</body>
+</html>

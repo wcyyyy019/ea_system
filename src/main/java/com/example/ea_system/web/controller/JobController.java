@@ -76,7 +76,7 @@ public class JobController {
         return MessageUtil.success();
     }
 
-    @GetMapping("select")
+    @GetMapping("/select")
     @ApiOperation("查看所有职位")
     public Message selectAll()
     {

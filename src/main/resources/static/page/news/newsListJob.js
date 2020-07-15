@@ -33,7 +33,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 					photos: '.thumbnailImages'+ids 
 				});
 			}
-			
 		}
     });
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
@@ -73,6 +72,34 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     body.find(".described").val(edit.described);
 
 
+                    form.render();
+                }
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回工作经历列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500)
+            }
+        })
+    }
+    function addNews1(edit){
+        var index = layui.layer.open({
+            title : "查看职位",
+            type : 2,
+            area: ['90%', '90%'],
+            fixed: false, //不固定
+            maxmin: true,
+            content : "giveJob1.html",
+            success : function(layero, index){
+                var body = layui.layer.getChildFrame('body', index);
+                if(edit){
+                    body.find(".newsName").val(edit.newsName);
+                    body.find(".abstract").val(edit.abstract);
+                    body.find(".thumbImg").attr("src",edit.newsImg);
+                    body.find("#news_content").val(edit.content);
+                    body.find(".newsStatus select").val(edit.newsStatus);
+                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
+                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
                     form.render();
                 }
                 setTimeout(function(){

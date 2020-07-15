@@ -6,34 +6,48 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         table = layui.table;
     //新闻列表
     var tableIns = table.render({
-		  elem: '#newsList',
-		  url : '../../json/newsList.json',
-		  cellMinWidth : 95,
-		  page : true,
-		  //toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
-		  defaultToolbar: ['filter', 'exports', 'print'],
-		  limit : 20,
-		  limits : [10,15,20,25],
-		  id : "newsListTable",
+        elem: '#newsList',
+        url : '../../json/newsList.json',
+        cellMinWidth : 95,
+        page : true,
+        //toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
+        defaultToolbar: ['filter', 'exports', 'print'],
+        limit : 20,
+        limits : [10,15,20,25],
+        id : "newsListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
             {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
             {field: 'newsName', title: '企业名称', width:350},
+            {field: 'newsTop', title: '喜爱', align:'center', templet:function(d){
+                    return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
+                }},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
-		done: function(res, curr, count) {
-			//图片放大预览
-			var ids;
-			for (var j in res.data) {
-				ids = res.data[j].newsId;
-				layer.photos({
-					photos: '.thumbnailImages'+ids 
-				});
-			}
-			
-		}
+        done: function(res, curr, count) {
+            //图片放大预览
+            var ids;
+            for (var j in res.data) {
+                ids = res.data[j].newsId;
+                layer.photos({
+                    photos: '.thumbnailImages'+ids
+                });
+            }
+
+        }
     });
     //是否置顶
+    form.on('switch(newsTop)', function(data){
+        var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
+        setTimeout(function(){
+            layer.close(index);
+            if(data.elem.checked){
+                layer.msg("喜欢设置成功！");
+            }else{
+                layer.msg("取消喜欢成功！");
+            }
+        },500);
+    })
 
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
     $(".search_btn").on("click",function(){
@@ -53,12 +67,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
-            title : "毕业生信息",
+            title : "查看企业",
             type : 2,
-			area: ['90%', '90%'],
-			fixed: false, //不固定
-			maxmin: true,
-            content : "../user/seeuserInfoPersonage.html",
+            area: ['90%', '90%'],
+            fixed: false, //不固定
+            maxmin: true,
+            content : "../user/seeLikeuserInfoCompany.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
@@ -79,7 +93,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             }
         })
     }
-
     $(".addNews_btn").click(function(){
         addNews();
     })
@@ -110,7 +123,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     table.on('tool(newsList)', function(obj){
         var layEvent = obj.event,
             data = obj.data;
-			console.log(obj)
+        console.log(obj)
         if(layEvent === 'edit'){ //编辑
             addNews(data);
         } else if(layEvent === 'del'){ //删除
