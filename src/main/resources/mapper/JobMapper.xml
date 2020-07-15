@@ -294,4 +294,7 @@
   <select id="selectBycompany" resultMap="BaseResultMap">
          select * from ea_system.job_info where companyid in (select companyid from ea_system.company_info where companyid = #{companyid})
   </select>
+  <select id="selectName" resultMap="BaseResultMap">
+    select * from ea_system.job_info where jobName like #{title}
+  </select>
 </mapper>

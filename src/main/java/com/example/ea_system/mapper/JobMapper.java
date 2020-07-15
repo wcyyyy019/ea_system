@@ -3,6 +3,8 @@ package com.example.ea_system.mapper;
 import com.example.ea_system.bean.Job;
 import com.example.ea_system.bean.JobExample;
 import java.util.List;
+
+import com.example.ea_system.bean.Resume;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -34,4 +36,7 @@ public interface JobMapper {
     List<Job> selectAll();
 
     List<Job> selectBycompany(int id);
+
+    List<Job> selectName(String title);
+
 }

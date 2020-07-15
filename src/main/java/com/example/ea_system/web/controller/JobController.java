@@ -1,6 +1,7 @@
 package com.example.ea_system.web.controller;
 
 import com.example.ea_system.bean.Job;
+import com.example.ea_system.bean.Resume;
 import com.example.ea_system.service.IJobService;
 import com.example.ea_system.service.ILoginerService;
 import com.example.ea_system.util.Message;
@@ -44,6 +45,7 @@ public class JobController {
     @RequestMapping("/getAllJob")
     @ResponseBody
     public UIMessage<Job> getAllJob(){
+        System.out.println("hello");
         List<Job> jobs = jobService.getAllJob();
         UIMessage<Job> uiMessage = new UIMessage<Job>();
         uiMessage.setData(jobs);
@@ -68,12 +70,27 @@ public class JobController {
 
 
 
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     @ApiOperation("删除职位信息")
-    public Message delete(int id)
+    @ResponseBody
+    public UIMessage delete(int id)
     {
         jobService.deleteByID(id);
-        return MessageUtil.success();
+        UIMessage uiMessage = new UIMessage();
+        uiMessage.setMsg("success");
+        return uiMessage;
+    }
+
+    @RequestMapping("/deleteMany")
+    @ApiOperation("删除职位信息")
+    @ResponseBody
+    public UIMessage deleteMany(int[] ids)
+    {
+        jobService.deleteByIDS(ids);
+//        System.out.println("批量删除成功");
+        UIMessage uiMessage = new UIMessage();
+        uiMessage.setMsg("success");
+        return uiMessage;
     }
 
     @GetMapping("/select")
@@ -83,4 +100,22 @@ public class JobController {
        List<Job> l=jobService.selectAll();
         return MessageUtil.success(l);
     }
+
+    @GetMapping("/selectByTitle")
+    @ApiOperation("通过标题进行模糊查询")
+    @ResponseBody
+    public UIMessage<Job> selectByTitle(String search)
+    {
+//         System.out.println("查询"+search);
+        List<Job> list=jobService.selectName(search);
+        UIMessage<Job> resumeUIMessage = new UIMessage<Job>();
+        resumeUIMessage.setCode(0);
+        resumeUIMessage.setMsg("成功");
+        resumeUIMessage.setCount((long)list.size());
+        resumeUIMessage.setData(list);
+//         System.out.println(resumeUIMessage.getData());
+        return resumeUIMessage;
+    }
+
+
 }

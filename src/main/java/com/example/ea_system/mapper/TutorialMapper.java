@@ -1,5 +1,6 @@
 package com.example.ea_system.mapper;
 
+import com.example.ea_system.bean.Resume;
 import com.example.ea_system.bean.Tutorial;
 import com.example.ea_system.bean.TutorialExample;
 import java.util.List;
@@ -29,4 +30,5 @@ public interface TutorialMapper {
     int updateByPrimaryKeySelective(Tutorial record);
 
     int updateByPrimaryKey(Tutorial record);
+    List<Tutorial> selectName(String title);
 }

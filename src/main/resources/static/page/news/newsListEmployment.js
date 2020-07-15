@@ -8,7 +8,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //新闻列表
     var tableIns = table.render({
 		  elem: '#newsList',
-		  url : '../../json/newsList.json',
+		  url : '/Tutorial/selectByID',
 		  cellMinWidth : 95,
 		  page : true,
 		  //toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
@@ -18,8 +18,9 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 		  id : "newsListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
-            {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
-            {field: 'newsName', title: '简历标题', width:350},
+            {field: 'tutorialid', title: 'ID', width:60, align:"center" ,fixed:"left"},
+            {field: 'title', title: '简历标题', width:350},
+            {field: 'addtime', title: '上传时间', width:350},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
 		done: function(res, curr, count) {
@@ -52,11 +53,13 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     $(".search_btn").on("click",function(){
         if($(".searchVal").val() != ''){
             table.reload("newsListTable",{
+                url:'/Tutorial/selectByTitle',
+                type:'get',
                 page: {
                     curr: 1 //重新从第 1 页开始
                 },
                 where: {
-                    key: $(".searchVal").val()  //搜索的关键字
+                    search: $(".searchVal").val()  //搜索的关键字
                 }
             })
         }else{
@@ -76,13 +79,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".newsName").val(edit.newsName);
-                    body.find(".abstract").val(edit.abstract);
-                    body.find(".thumbImg").attr("src",edit.newsImg);
-                    body.find("#news_content").val(edit.content);
-                    body.find(".newsStatus select").val(edit.newsStatus);
-                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
-                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
+                    body.find(".title").val(edit.title);
+                    body.find(".content").val(edit.content);
                     form.render();
                 }
                 setTimeout(function(){
@@ -105,13 +103,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".newsName").val(edit.newsName);
-                    body.find(".abstract").val(edit.abstract);
-                    body.find(".thumbImg").attr("src",edit.newsImg);
-                    body.find("#news_content").val(edit.content);
-                    body.find(".newsStatus select").val(edit.newsStatus);
-                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
-                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
+                    body.find(".title").val(edit.title);
+                    body.find(".content").val(edit.content);
                     form.render();
                 }
                 setTimeout(function(){
@@ -134,12 +127,29 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             newsId = [];
         if(data.length > 0) {
             for (var i in data) {
-                newsId.push(data[i].newsId);
+                newsId.push(data[i].tutorialid);
             }
             layer.confirm('确定删除选中的简历？', {icon: 3, title: '提示信息'}, function (index) {
                 // $.get("删除简历接口",{
                 //     newsId : newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
+                $.ajax({
+                    url:'/Tutorial//deleteMany',
+                    type:'post',
+                    data:{ids:newsId},
+                    dataType:'JSON',
+                    traditional: true,
+                    success:function(){
+                        layer.msg("提交成功");
+                    },
+                    error:function () {
+                        layer.msg("提交失败")
+                    }
+                })
+                tableIns.reload();
+                tableIns.reload();
+                tableIns.reload();
+
                 tableIns.reload();
                 layer.close(index);
                 // })
@@ -158,12 +168,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             addNews1(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此简历？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除简历接口",{
-                //     newsId : data.newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
+                $.get("/Tutorial/deleteOne",{
+                    id : data.tutorialid  //将需要删除的newsId作为参数传入
+                },function(data){
                     tableIns.reload();
                     layer.close(index);
-                // })
+                })
             });
         } 
     });

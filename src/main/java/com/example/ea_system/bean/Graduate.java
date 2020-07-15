@@ -2,6 +2,7 @@ package com.example.ea_system.bean;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class Graduate implements Serializable {
     private String sex;
 
     private String nationality;
-    @ApiModelProperty(value = "生日 格式如1999/1/1")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     private String maritalstatus;

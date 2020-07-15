@@ -6,12 +6,6 @@
 			"spread": true,
 			"children": [
 				{
-					"title": "工作经历",
-					"icon": "",
-					"href": "page/news/newsListJobExperience.html",
-					"spread": false
-				},
-				{
 					"title": "就业指导",
 					"icon": "",
 					"href": "page/news/newsListTrain.html",
@@ -27,12 +21,6 @@
 					"title": "企业列表",
 					"icon": "",
 					"href": "page/news/newsListSeeCompany.html",
-					"spread": false
-				},
-				{
-					"title": "喜爱企业列表",
-					"icon": "",
-					"href": "page/news/newsListLikeCompany.html",
 					"spread": false
 				},
 				{

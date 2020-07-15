@@ -15,65 +15,44 @@
 	</head>
 	<body class="childrenBody">
 		<form class="layui-form layui-row" style="padding: 20px;background-color: #fff;">
-			<div class="layui-col-md3 layui-col-xs12 user_right" style="margin-bottom: 20px;">
-				<div class="layui-upload-list" title="我要换一个头像">
-					<img class="layui-upload-img layui-circle userFaceBtn userAvatar" id="userFace">
-				</div>
-				
-			</div>
+
 			<div class="layui-col-md8 layui-col-xs12" >
-				<div class="layui-form-item">
-					<label class="layui-form-label">用户组</label>
-					<div class="layui-input-block">
-						<input type="text" value="企业" disabled class="layui-input layui-disabled">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">企业用户ID</label>
-					<div class="layui-input-block">
-						<input type="int" id="companyId" value="" placeholder="请输入企业用户ID" class="layui-input userPhone">
-					</div>
-				</div>
+
 				<div class="layui-form-item">
 					<label class="layui-form-label">企业名称</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="name" value="" placeholder="请输入企业全称" lay-verify="required" class="layui-input realName">
+						<input type="varchar" id="name" name="name" value="" placeholder="请输入企业全称" lay-verify="required" class="layui-input realName">
 					</div>
 				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">用户ID</label>
-					<div class="layui-input-block">
-						<input type="int" id="userId" value="" placeholder="请输入用户ID"  class="layui-input userPhone">
-					</div>
-				</div>
+
 				<div class="layui-form-item">
 					<label class="layui-form-label">联系人</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="linkMan" value="" placeholder="请输入真实姓名" lay-verify="required" class="layui-input realName">
+						<input type="varchar" id="linkMan" name="linkman" value="" placeholder="请输入真实姓名" lay-verify="required" class="layui-input realName">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">联系电话</label>
 					<div class="layui-input-block">
-						<input type="int" id="phoneNumber" value="" placeholder="请输入电话" lay-verify="phone" class="layui-input userPhone">
+						<input type="int" id="phoneNumber" name="phonenumber" value="" placeholder="请输入电话" lay-verify="required" class="layui-input userPhone">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">企业地址</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="address" value="" placeholder="请输入企业地址" lay-verify="required" class="layui-input realName">
+						<input type="varchar" id="address" name="address" value="" placeholder="请输入企业地址" lay-verify="required" class="layui-input realName">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">邮箱</label>
 					<div class="layui-input-block">
-						<input type="varchar" value="" placeholder="请输入邮箱" lay-verify="email" class="layui-input userEmail">
+						<input type="varchar" value=""name="email" placeholder="请输入邮箱" lay-verify="email" class="layui-input userEmail">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">企业网站</label>
 					<div class="layui-input-block">
-						<input type="varchar" id="website" value="" placeholder="请输入企业网站"class="layui-input realName">
+						<input type="varchar" id="website" name="website" value="" placeholder="请输入企业网站"class="layui-input realName">
 					</div>
 				</div>
 				<div class="layui-form-item">

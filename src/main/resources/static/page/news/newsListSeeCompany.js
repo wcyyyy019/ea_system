@@ -7,7 +7,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //新闻列表
     var tableIns = table.render({
         elem: '#newsList',
-        url : '../../json/newsList.json',
+        url : '/Company/selectall',
         cellMinWidth : 95,
         page : true,
         //toolbar: '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
@@ -17,11 +17,11 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         id : "newsListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
-            {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
-            {field: 'newsName', title: '企业名称', width:350},
-            {field: 'newsTop', title: '喜爱', align:'center', templet:function(d){
-                    return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
-                }},
+            {field: 'companyid', title: 'ID', width:60, align:"center" ,fixed:"left"},
+            {field: 'name', title: '公司名称', width:350},
+            {field: 'address', title: '公司地址', width:350},
+            {field: 'phonenumber', title: '联系电话', width:350},
+            {field: 'linkman', title: '联系人', width:350},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
         done: function(res, curr, count) {
@@ -53,11 +53,19 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     $(".search_btn").on("click",function(){
         if($(".searchVal").val() != ''){
             table.reload("newsListTable",{
+                url:'/Company/selectByTitle',
+                type:'get',
+                success:function(){
+                    layer.msg("查询成功");
+                },
+                error:function () {
+                    layer.msg("查询失败")
+                },
                 page: {
                     curr: 1 //重新从第 1 页开始
                 },
                 where: {
-                    key: $(".searchVal").val()  //搜索的关键字
+                    search: $(".searchVal").val()  //搜索的关键字
                 }
             })
         }else{
@@ -76,13 +84,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".newsName").val(edit.newsName);
-                    body.find(".abstract").val(edit.abstract);
-                    body.find(".thumbImg").attr("src",edit.newsImg);
-                    body.find("#news_content").val(edit.content);
-                    body.find(".newsStatus select").val(edit.newsStatus);
-                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
-                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
+                    body.find(".name").val(edit.name);
+                    body.find(".address").val(edit.address);
+                    body.find(".phonenumber").val(edit.phonenumber);
+                    body.find(".linkman").val(edit.linkman);
+                    body.find(".email").val(edit.email);
+                    body.find(".website").val(edit.website);
                     form.render();
                 }
                 setTimeout(function(){

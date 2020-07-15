@@ -5,6 +5,7 @@ import com.example.ea_system.bean.CompanyExample;
 import java.util.List;
 
 import com.example.ea_system.bean.Job;
+import com.example.ea_system.bean.Resume;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -33,5 +34,7 @@ public interface CompanyMapper {
     int updateByPrimaryKey(Company record);
 
     List<Company> selectAll();
+
+    List<Company> selectName(String title);
 
 }

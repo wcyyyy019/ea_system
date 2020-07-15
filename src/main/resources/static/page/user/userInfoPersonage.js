@@ -67,25 +67,31 @@ layui.use(['form', 'layer', 'upload', 'laydate', "address"], function() {
             time: false,
             shade: 0.8
         });
-        //将填写的用户信息存到session以便下次调取
-        var key, userInfoHtml = '';
-        userInfoHtml = {
-            'realName': $(".realName").val(),
-            'sex': data.field.sex,
-            'userPhone': $(".userPhone").val(),
-            'userBirthday': $(".userBirthday").val(),
-            'province': data.field.province,
-            'city': data.field.city,
-            'area': data.field.area,
-            'userEmail': $(".userEmail").val(),
-            'myself': $(".myself").val()
-        };
-        for (key in data.field) {
-            if (key.indexOf("like") != -1) {
-                userInfoHtml[key] = "on";
+        $.ajax({
+            url:'/Graduate/update',
+            type:'post',
+            data:data.field,
+            dataType:'JSON',
+            success:function(){
+                layer.msg("操作成功");
+            },
+            error:function () {
+                layer.msg("操作失败")
             }
-        }
-        window.sessionStorage.setItem("userInfo", JSON.stringify(userInfoHtml));
+        })
+        // 实际使用时的提交信息
+        // $.post("上传路径",{
+        //     userName : $(".userName").val(),  //登录名
+        //     userEmail : $(".userEmail").val(),  //邮箱
+        //     userSex : data.field.sex,  //性别
+        //     userGrade : data.field.userGrade,  //会员等级
+        //     userStatus : data.field.userStatus,    //用户状态
+        //     newsTime : submitTime,    //添加时间
+        //     userDesc : $(".userDesc").text(),    //用户简介
+        // },function(res){
+        //
+        // })
+
         setTimeout(function() {
             layer.close(index);
             layer.msg("提交成功！");

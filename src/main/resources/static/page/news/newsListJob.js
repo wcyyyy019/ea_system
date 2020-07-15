@@ -39,11 +39,19 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     $(".search_btn").on("click",function(){
         if($(".searchVal").val() != ''){
             table.reload("newsListTable",{
+                url:'/Job/selectByTitle',
+                type:'get',
+                success:function(){
+                    layer.msg("查询成功");
+                },
+                error:function () {
+                    layer.msg("查询失败")
+                },
                 page: {
                     curr: 1 //重新从第 1 页开始
                 },
                 where: {
-                    key: $(".searchVal").val()  //搜索的关键字
+                    search: $(".searchVal").val()  //搜索的关键字
                 }
             })
         }else{
@@ -62,7 +70,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".jobName").val(edit.jobname);
+                    body.find(".jobname").val(edit.jobname);
                     body.find(".requirement").val(edit.requirement);
                     body.find(".address").val(edit.address);
                     body.find(".salary").val(edit.salary);
@@ -93,13 +101,14 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".newsName").val(edit.newsName);
-                    body.find(".abstract").val(edit.abstract);
-                    body.find(".thumbImg").attr("src",edit.newsImg);
-                    body.find("#news_content").val(edit.content);
-                    body.find(".newsStatus select").val(edit.newsStatus);
-                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
-                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
+                    body.find(".jobname").val(edit.jobname);
+                    body.find(".requirement").val(edit.requirement);
+                    body.find(".address").val(edit.address);
+                    body.find(".salary").val(edit.salary);
+                    body.find(".number").val(edit.number);
+                    body.find(".otherpay").val(edit.otherpay);
+                    body.find(".closedate").val(edit.closedate);
+                    body.find(".described").val(edit.described);
                     form.render();
                 }
                 setTimeout(function(){
@@ -115,17 +124,33 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     })
     //批量删除
     $(".delAll_btn").click(function(){
-        var checkStatus = table.checkStatus('newsListTable'),
+        var checkStatus = table.checkStatus('JobListTable'),
             data = checkStatus.data,
             newsId = [];
         if(data.length > 0) {
             for (var i in data) {
-                newsId.push(data[i].newsId);
+                newsId.push(data[i].jobid);
             }
             layer.confirm('确定删除选中的工作经历？', {icon: 3, title: '提示信息'}, function (index) {
                 // $.get("删除简历接口",{
                 //     newsId : newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
+                $.ajax({
+                    url:'/Job/deleteMany',
+                    type:'post',
+                    data:{ids:newsId},
+                    dataType:'JSON',
+                    traditional: true,
+                    success:function(){
+                        layer.msg("删除成功");
+                    },
+                    error:function () {
+                        layer.msg("删除成功失败")
+                    }
+                })
+                tableIns.reload();
+                tableIns.reload();
+                tableIns.reload();
                 tableIns.reload();
                 layer.close(index);
                 // })
@@ -141,15 +166,15 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             data = obj.data;
 
         if(layEvent === 'edit'){ //编辑
-            addJob(data);
+            addNews1(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此工作经历？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除简历接口",{
-                //     newsId : data.newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
+                $.get("/Job/delete",{
+                    id : data.jobid  //将需要删除的newsId作为参数传入
+                },function(data){
                     tableIns.reload();
                     layer.close(index);
-                // })
+                })
             });
         } 
     });

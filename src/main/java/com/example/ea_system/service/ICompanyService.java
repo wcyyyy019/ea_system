@@ -13,4 +13,6 @@ public interface ICompanyService {
     List<Company> selectAll() throws RuntimeException;
     Company getCompanyByUserid(int id) throws RuntimeException;
     List<Job> selectBycompany(int id) throws RuntimeException;
+    List<Company> selectName(String title) throws RuntimeException;
+
 }

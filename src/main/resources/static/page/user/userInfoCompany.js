@@ -62,29 +62,19 @@ layui.use(['form', 'layer', 'upload', 'laydate', "address"], function() {
 
 	//提交个人资料
 	form.on("submit(changeUser)", function(data) {
-		var index = layer.msg('提交中，请稍候', {
-			icon: 16,
-			time: false,
-			shade: 0.8
-		});
-		//将填写的用户信息存到session以便下次调取
-		var key, userInfoHtml = '';
-		userInfoHtml = {
-			'realName': $(".realName").val(),
-			'sex': data.field.sex,
-			'userPhone': $(".userPhone").val(),
-			'userBirthday': $(".userBirthday").val(),
-			'province': data.field.province,
-			'city': data.field.city,
-			'area': data.field.area,
-			'userEmail': $(".userEmail").val(),
-			'myself': $(".myself").val()
-		};
-		for (key in data.field) {
-			if (key.indexOf("like") != -1) {
-				userInfoHtml[key] = "on";
+
+		$.ajax({
+			url:'/Company/update',
+			type:'post',
+			data:data.field,
+			dataType:'JSON',
+			success:function(){
+				layer.msg("操作成功");
+			},
+			error:function () {
+				layer.msg("操作失败")
 			}
-		}
+		})
 		window.sessionStorage.setItem("userInfo", JSON.stringify(userInfoHtml));
 		setTimeout(function() {
 			layer.close(index);

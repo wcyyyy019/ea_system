@@ -19,7 +19,7 @@
 		"href": "",
 		"spread": true,
 		"children": [{
-			"title": "毕业生列表",
+			"title": "简历列表",
 			"icon": "",
 			"href": "page/news/newsListgraduate.html",
 			"spread": false

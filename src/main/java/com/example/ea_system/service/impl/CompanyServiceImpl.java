@@ -50,8 +50,11 @@ public  class CompanyServiceImpl implements ICompanyService {
 
     @Override
     public List<Company> selectAll() throws RuntimeException {
-        List<Company> list=companyMapper.selectAll();
-        return list;
+        CompanyExample companyExample = new CompanyExample();
+        companyExample.createCriteria().andCompanyidIsNotNull();
+
+
+        return companyMapper.selectByExample(companyExample);
     }
 
     @Override
@@ -65,6 +68,19 @@ public  class CompanyServiceImpl implements ICompanyService {
     public List<Job> selectBycompany(int id) throws RuntimeException {
             List<Job> list=jobMapper.selectBycompany(id);
              return list;
+    }
+
+    @Override
+    public List<Company> selectName(String title) throws RuntimeException {
+        if ((title==null||"".equals(title))) {
+            return selectAll();
+        }else if(!"".equals(title))
+        {
+            //前者为空 后者不为空
+            title="%"+title+"%";
+            return companyMapper.selectName(title);
+        }
+        return null;
     }
 
 

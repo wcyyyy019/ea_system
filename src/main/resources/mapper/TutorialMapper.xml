@@ -208,4 +208,7 @@
       companyId = #{companyid,jdbcType=INTEGER}
     where tutorialId = #{tutorialid,jdbcType=INTEGER}
   </update>
+  <select id="selectName" resultMap="BaseResultMap">
+    select * from ea_system.tutorial_info where title like #{title}
+  </select>
 </mapper>

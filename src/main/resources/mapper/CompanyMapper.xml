@@ -258,5 +258,7 @@
   <select id="selectAll" resultMap="BaseResultMap">
         select name from ea_system.company_info
     </select>
-
+  <select id="selectName" resultMap="BaseResultMap">
+    select * from ea_system.company_info where name like #{title}
+  </select>
 </mapper>

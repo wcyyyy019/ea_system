@@ -15,49 +15,27 @@
 	</head>
 	<body class="childrenBody">
 		<form class="layui-form layui-row" style="padding: 20px;background-color: #fff;">
-			<div class="layui-col-md3 layui-col-xs12 user_right" style="margin-bottom: 20px;">
-				<div class="layui-upload-list" title="我要换一个头像">
-					<img class="layui-upload-img layui-circle userFaceBtn userAvatar" id="userFace">
-				</div>
-				
-			</div>
+
 			<div class="layui-col-md8 layui-col-xs12" >
 				<div class="layui-form-item">
 
-				<div class="layui-form-item">
-					<label class="layui-form-label">ID</label>
-					<div class="layui-input-block">
-						<input type="int" id="tutorialId" value=""class="layui-input userPhone">
-					</div>
-				</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">标题</label>
 						<div class="layui-input-block">
-							<input type="varchar" id="title" value="" placeholder="请输入企业用户ID"  class="layui-input userPhone">
+							<input type="varchar" id="title" value="" placeholder="请输入标题"  class="layui-input title" name="title">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">内容</label>
 						<div class="layui-input-block">
-							<input type="varchar" id="content" value="" placeholder="请输入职位" lay-verify="required" class="layui-input realName">
-						</div>
-					</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">发布时间</label>
-					<div class="layui-input-block">
-						<input type="vdatatime" id="addTime" value="" placeholder="请输入需求" lay-verify="required" class="layui-input realName">
-					</div>
-				</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">联系人</label>
-						<div class="layui-input-block">
-							<input type="int" id="companyId" value="" placeholder="请输入联系人姓名" lay-verify="required" class="layui-input realName">
+							<input type="varchar" id="content" name="content" value="" placeholder="请输入内容" lay-verify="required" class="layui-input content">
 						</div>
 					</div>
 
+
 				<div class="layui-form-item">
 					<div class="layui-input-block">
-						<button class="layui-btn" onclick="window.close()" lay-submit="" lay-filter="changeUser">立即提交</button>
+						<button class="layui-btn" onclick="window.close()" lay-submit="" lay-filter="addNews">立即提交</button>
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>

@@ -36,6 +36,14 @@ public class JobServiceImpl implements IJobService {
     }
 
     @Override
+    public void deleteByIDS(int[] ids) throws RuntimeException {
+        for (int i=0;i<ids.length;i++){
+            int id =ids[i];
+            deleteByID(id);
+        }
+    }
+
+    @Override
     public List<Job> getAllJob() throws RuntimeException {
         JobExample jobExample =new JobExample();
 
@@ -52,6 +60,19 @@ public class JobServiceImpl implements IJobService {
     public List<Job> selectAll() throws RuntimeException {
        List<Job> list=jobMapper.selectAll();
        return list;
+    }
+
+    @Override
+    public List<Job> selectName(String title) throws RuntimeException {
+        if ((title==null||"".equals(title))) {
+            return selectAll();
+        }else if(!"".equals(title))
+        {
+            //前者为空 后者不为空
+            title="%"+title+"%";
+            return jobMapper.selectName(title);
+        }
+        return null;
     }
 
 

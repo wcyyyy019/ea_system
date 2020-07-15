@@ -129,7 +129,7 @@ public class UserController {
         user.setUsername(username);
         user.setPassword(password);
         user.setUsertype(Integer.parseInt(userType));
-        System.out.println(user);
+//        System.out.println(user);
         boolean hasExieted=userService.addAndUpdate(user);
         if (hasExieted){
             int id = user.getUserid();
