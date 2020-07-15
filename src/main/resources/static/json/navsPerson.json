@@ -12,7 +12,7 @@
 					"spread": false
 				},
 				{
-					"title": "培训记录",
+					"title": "就业指导",
 					"icon": "",
 					"href": "page/news/newsListTrain.html",
 					"spread": false
@@ -33,6 +33,12 @@
 					"title": "喜爱企业列表",
 					"icon": "",
 					"href": "page/news/newsListLikeCompany.html",
+					"spread": false
+				},
+				{
+					"title": "职位列表",
+					"icon": "",
+					"href": "page/news/seenewsListJob.html",
 					"spread": false
 				},
 				{

@@ -19,7 +19,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
             {field: 'newsId', title: 'ID', width:60, align:"center" ,fixed:"left"},
-            {field: 'newsName', title: '标题', width:350},
+            {field: 'newsName', title: '简历标题', width:350},
             {title: '操作', width:130, templet:'#newsListBar',fixed:"right",align:"center"}
         ]],
 		done: function(res, curr, count) {
@@ -67,11 +67,40 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //添加文章
     function addNews(edit){
         var index = layui.layer.open({
-            title : "查看就业指导",
+            title : "添加简历",
             type : 2,
 			area: ['90%', '90%'],
 			fixed: false, //不固定
 			maxmin: true,
+            content : "employment.html",
+            success : function(layero, index){
+                var body = layui.layer.getChildFrame('body', index);
+                if(edit){
+                    body.find(".newsName").val(edit.newsName);
+                    body.find(".abstract").val(edit.abstract);
+                    body.find(".thumbImg").attr("src",edit.newsImg);
+                    body.find("#news_content").val(edit.content);
+                    body.find(".newsStatus select").val(edit.newsStatus);
+                    body.find(".openness input[name='openness'][title='"+edit.newsLook+"']").prop("checked","checked");
+                    body.find(".newsTop input[name='newsTop']").prop("checked",edit.newsTop);
+                    form.render();
+                }
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回简历列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500)
+            }
+        })
+       
+    }
+    function addNews1(edit){
+        var index = layui.layer.open({
+            title : "添加简历",
+            type : 2,
+            area: ['90%', '90%'],
+            fixed: false, //不固定
+            maxmin: true,
             content : "seeemployment.html",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
@@ -86,15 +115,14 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     form.render();
                 }
                 setTimeout(function(){
-                    layui.layer.tips('点击此处返回培训记录列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回简历列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 },500)
             }
         })
-       
-    }
 
+    }
     $(".addNews_btn").click(function(){
         addNews();
     })
@@ -108,7 +136,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             for (var i in data) {
                 newsId.push(data[i].newsId);
             }
-            layer.confirm('确定删除选中的培训记录？', {icon: 3, title: '提示信息'}, function (index) {
+            layer.confirm('确定删除选中的简历？', {icon: 3, title: '提示信息'}, function (index) {
                 // $.get("删除简历接口",{
                 //     newsId : newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
@@ -117,7 +145,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 // })
             })
         }else{
-            layer.msg("请选择需要删除的培训记录");
+            layer.msg("请选择需要删除的简历");
         }
     })
 
@@ -127,9 +155,9 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             data = obj.data;
 			console.log(obj)
         if(layEvent === 'edit'){ //编辑
-            addNews(data);
+            addNews1(data);
         } else if(layEvent === 'del'){ //删除
-            layer.confirm('确定删除此培训记录？',{icon:3, title:'提示信息'},function(index){
+            layer.confirm('确定删除此简历？',{icon:3, title:'提示信息'},function(index){
                 // $.get("删除简历接口",{
                 //     newsId : data.newsId  //将需要删除的newsId作为参数传入
                 // },function(data){
